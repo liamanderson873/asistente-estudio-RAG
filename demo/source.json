@@ -1,0 +1,66 @@
+{
+  "sql-fundamentos.pdf": {
+    "title": "SQL y bases de datos relacionales",
+    "pages": [
+      {
+        "title": "Tablas, claves y relaciones",
+        "paragraphs": [
+          "Una base de datos relacional representa información mediante tablas. Cada fila representa un registro y cada columna un atributo. Por ejemplo, alumnos contiene id y nombre, mientras que matriculas contiene alumno_id y curso. Este material usa ejemplos ficticios y no contiene datos de estudiantes reales.",
+          "Una clave primaria identifica de manera única cada fila. No admite valores nulos ni duplicados. En alumnos, id puede ser la clave primaria. Una clave foránea expresa una referencia a una clave primaria o única de otra tabla, o de la misma tabla. Por ejemplo, matriculas.alumno_id puede referenciar alumnos.id. Una clave foránea no implica que su propia columna sea única: un alumno puede tener varias matrículas.",
+          "La integridad referencial impide guardar referencias a filas inexistentes. Si se intenta matricular al alumno 99 y no existe alumnos.id=99, la base de datos rechaza la operación. La política de borrado se configura: RESTRICT impide un borrado que dejaría referencias y CASCADE elimina también las filas dependientes. Elegir CASCADE requiere considerar qué datos se perderían.",
+          "Una relación de muchos a muchos se representa mediante una tabla intermedia. matriculas conecta alumnos con cursos. Una restricción UNIQUE(alumno_id, curso_id) evita matricular dos veces al mismo alumno en el mismo curso. La base de datos debe proteger esta regla incluso si dos peticiones llegan simultáneamente."
+        ]
+      },
+      {
+        "title": "INNER JOIN y LEFT JOIN",
+        "paragraphs": [
+          "JOIN combina filas de tablas usando una condición. INNER JOIN conserva solamente las combinaciones que cumplen esa condición en ambos lados. LEFT JOIN conserva todas las filas de la tabla izquierda; cuando no encuentra correspondencia a la derecha, las columnas de la tabla derecha tienen valor NULL.",
+          "Ejemplo: alumnos contiene a Ana y a Luis. matriculas contiene una matrícula de Ana y ninguna de Luis. Una consulta alumnos INNER JOIN matriculas muestra a Ana. La misma consulta con LEFT JOIN muestra a Ana y también a Luis, con NULL en las columnas de matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente.",
+          "Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a LEFT JOIN matriculas m ON a.id = m.alumno_id. Para buscar alumnos sin matrícula puede añadirse WHERE m.alumno_id IS NULL, siempre que esa columna sea no nula en las matrículas existentes.",
+          "Hay que distinguir condiciones en ON y filtros en WHERE. Si tras un LEFT JOIN se añade WHERE m.curso = 'SQL', se eliminan las filas sin matrícula porque su valor es NULL. Para conservar todos los alumnos y asociar solo las matrículas de SQL, la condición del curso debe formar parte del ON."
+        ]
+      },
+      {
+        "title": "Índices y transacciones",
+        "paragraphs": [
+          "Un índice permite localizar registros sin recorrer necesariamente toda la tabla. Puede acelerar filtros y ciertas ordenaciones, pero ocupa espacio y añade trabajo a las inserciones, actualizaciones y borrados. No conviene crear un índice en cada columna sin medir las consultas reales. PostgreSQL permite inspeccionar planes con EXPLAIN y medir una ejecución con EXPLAIN ANALYZE; este último ejecuta la consulta.",
+          "Una transacción agrupa operaciones que deben confirmarse juntas. COMMIT confirma los cambios; ROLLBACK los descarta. En una transferencia ficticia se resta saldo de una cuenta y se suma a otra. Si falla la segunda operación, ambas deben deshacerse para no perder dinero dentro del ejemplo.",
+          "ACID resume atomicidad, consistencia, aislamiento y durabilidad. Atomicidad significa que se aplican todas las operaciones o ninguna. Consistencia significa que se preservan las reglas definidas. Aislamiento regula cómo interactúan operaciones concurrentes. Durabilidad significa que una confirmación persiste según las garantías de almacenamiento y configuración del sistema.",
+          "Una carga idempotente produce el mismo estado persistido al repetirse con los mismos datos. Para documentos puede usarse una huella SHA-256 del contenido con una restricción UNIQUE. Comprobar primero si existe no basta frente a cargas simultáneas: también se necesita una restricción o coordinación transaccional en la base de datos."
+        ]
+      }
+    ]
+  },
+  "python-fundamentos.pdf": {
+    "title": "Python para procesamiento de datos",
+    "pages": [
+      {
+        "title": "Listas, diccionarios y generadores",
+        "paragraphs": [
+          "Una lista es una secuencia ordenada y mutable. Puede almacenar varios elementos, admitir duplicados y recorrerse con un bucle for. Una tupla también representa una secuencia ordenada, pero no permite sustituir sus elementos después de crearla. La elección depende del significado de los datos, no solo de la sintaxis.",
+          "Un diccionario asocia claves únicas con valores. Las claves deben ser hashables. Es útil para localizar un registro por un identificador o contar apariciones. Por ejemplo, conteos['SQL'] = 3 asocia el texto SQL con el número tres. Acceder a una clave ausente mediante corchetes produce KeyError; get permite especificar un valor por defecto.",
+          "Un generador produce valores a medida que se solicitan. Una función con yield devuelve un generador; no construye necesariamente toda la secuencia de antemano. Esto permite procesar un archivo grande línea por línea sin guardar todas las líneas simultáneamente en una lista. Si el código posterior convierte el generador en list, se pierde esa ventaja de memoria.",
+          "Un generador es un iterador que se consume. Tras agotarlo, volver a recorrer el mismo objeto no reinicia los datos. Para otra pasada hay que crear un nuevo generador o conservar explícitamente los resultados. La evaluación diferida también implica que ciertos errores aparecen durante el recorrido y no al construir el generador."
+        ]
+      },
+      {
+        "title": "Errores y gestión de recursos",
+        "paragraphs": [
+          "Las excepciones comunican que una operación no puede completarse normalmente. Un bloque try ejecuta una operación y except maneja excepciones concretas. Conviene capturar los errores que el programa sabe tratar y permitir que los inesperados se hagan visibles, en lugar de ocultar todos los fallos con except Exception: pass.",
+          "ValueError suele indicar que el tipo de un argumento es aceptable pero su valor no. Por ejemplo, int('abc') produce ValueError. KeyError indica una clave ausente en un mapeo. Una aplicación puede traducir un error técnico en un mensaje comprensible conservando la causa mediante raise NuevoError(...) from original.",
+          "El bloque with utiliza un gestor de contexto para adquirir y liberar recursos. Al abrir un archivo con with open(...), el archivo se cierra al salir del bloque, incluso si aparece una excepción. Esto facilita liberar descriptores de archivos y otras conexiones de manera predecible.",
+          "Para entradas externas hay que validar límites y formato antes de procesarlas: tamaño del archivo, extensión admitida y estructura del contenido. La extensión por sí sola no demuestra que un archivo sea un PDF válido. Los mensajes visibles para el usuario no deben incluir contraseñas ni cadenas de conexión de la base de datos."
+        ]
+      },
+      {
+        "title": "Pruebas reproducibles y datos",
+        "paragraphs": [
+          "Una prueba unitaria comprueba una parte pequeña de la lógica de forma aislada. Una prueba de integración comprueba la colaboración entre componentes reales, por ejemplo Python y PostgreSQL. Sustituir PostgreSQL por un objeto simulado permite probar lógica de aplicación, pero no verifica restricciones, consultas ni transacciones reales de PostgreSQL.",
+          "En pytest, una fixture prepara datos o recursos que necesitan las pruebas. Una prueba parametrizada ejecuta el mismo comportamiento con entradas diferentes. Es útil probar casos normales y límites: archivo vacío, texto ausente, carga repetida o servicio no disponible.",
+          "Un doble de prueba puede sustituir una API externa para provocar un timeout o devolver una respuesta inválida de forma controlada. Esto hace reproducibles los errores. Una prueba con dobles no demuestra la velocidad ni la calidad de un modelo real; esos aspectos necesitan medidas con el servicio y el equipo que se van a utilizar.",
+          "Separar datos de desarrollo y de evaluación final ayuda a detectar ajustes que solo funcionan en ejemplos conocidos. En un buscador documental pueden anotarse preguntas y páginas relevantes. Recall@k mide qué proporción de las fuentes relevantes aparece entre los primeros k resultados; MRR promedia el inverso de la posición de la primera fuente relevante. Estas métricas evalúan recuperación y no demuestran por sí solas que una respuesta generada sea correcta."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.env
+*.egg-info/
+work/
+evaluation/results*.json
+.ua/intermediate/
+.ua/tmp/
+graphify-out/.cache/
+graphify-out/cache/
+graphify-out/.graphify_*

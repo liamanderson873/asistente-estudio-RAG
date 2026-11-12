@@ -1,0 +1,14 @@
+[
+  {"id":"dev-01","split":"dev","question":"¿Qué es una clave foránea?","expected":[["sql-fundamentos.pdf",1]]},
+  {"id":"dev-02","split":"dev","question":"¿Qué diferencia hay entre INNER JOIN y LEFT JOIN?","expected":[["sql-fundamentos.pdf",2]]},
+  {"id":"dev-03","split":"dev","question":"¿Qué ocurre si falla la segunda operación de una transacción?","expected":[["sql-fundamentos.pdf",3]]},
+  {"id":"dev-04","split":"dev","question":"¿Por qué un generador puede ahorrar memoria?","expected":[["python-fundamentos.pdf",1]]},
+  {"id":"dev-05","split":"dev","question":"¿Qué garantiza with al abrir un archivo?","expected":[["python-fundamentos.pdf",2]]},
+  {"id":"dev-06","split":"dev","question":"¿Qué mide MRR en recuperación documental?","expected":[["python-fundamentos.pdf",3]]},
+  {"id":"final-01","split":"holdout","question":"¿Cómo evitamos guardar dos veces un mismo PDF si llegan dos peticiones simultáneas?","expected":[["sql-fundamentos.pdf",3]]},
+  {"id":"final-02","split":"holdout","question":"¿Por qué un filtro en WHERE puede eliminar alumnos sin matrícula después de un LEFT JOIN?","expected":[["sql-fundamentos.pdf",2]]},
+  {"id":"final-03","split":"holdout","question":"¿Puedo recorrer dos veces el mismo generador ya agotado?","expected":[["python-fundamentos.pdf",1]]},
+  {"id":"final-04","split":"holdout","question":"¿Una prueba que simula PostgreSQL demuestra que funcionan las transacciones reales?","expected":[["python-fundamentos.pdf",3]]},
+  {"id":"absent-01","split":"dev","question":"¿Cuándo es mi próximo examen?","expected":[]},
+  {"id":"absent-02","split":"holdout","question":"¿Cuál es la contraseña de mi universidad?","expected":[]}
+]

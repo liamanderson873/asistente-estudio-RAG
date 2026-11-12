@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cuaderno · Asistente de estudio</title>
+  <link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header><a href="/" class="brand">cuaderno<span> / estudio con fuentes</span></a><span class="local">LOCAL</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">TUS DOCUMENTOS, A MANO</p>
+      <h1>Entiende el tema.<br>Encuentra la fuente.</h1>
+      <p>Pregunta a tus documentos y consulta los fragmentos que respaldan la respuesta.</p>
+    </section>
+    <div class="layout">
+      <aside class="panel">
+        <div class="section-title"><h2>Biblioteca</h2><span>01</span></div>
+        <p class="muted">Añade un PDF con texto seleccionable. Hasta 10 MB y 100 páginas.</p>
+        <form id="upload-form"><label class="file-label" for="pdf">Seleccionar documento</label>
+          <input id="pdf" name="file" type="file" accept="application/pdf,.pdf" required>
+          <button type="submit">Añadir a la biblioteca</button>
+        </form>
+        <p id="upload-status" role="status" aria-live="polite"></p>
+        <ul id="documents"><li class="muted">Consultando biblioteca…</li></ul>
+        <p class="note">Puedes empezar con los PDFs originales incluidos en la carpeta demo.</p>
+      </aside>
+      <section class="panel workspace" aria-labelledby="question-title">
+        <div class="section-title"><h2 id="question-title">¿Qué quieres entender?</h2><span>02</span></div>
+        <form id="question-form">
+          <label for="question">Tu pregunta</label>
+          <textarea id="question" rows="4" minlength="3" maxlength="1500" required placeholder="¿En qué se diferencian INNER JOIN y LEFT JOIN?"></textarea>
+          <div class="controls"><div><label for="mode">Cómo buscar</label><select id="mode">
+            <option value="hybrid">Palabras + significado</option><option value="lexical">Por palabras</option><option value="vector">Por significado</option>
+          </select></div><button type="submit">Buscar respuesta ↗</button></div>
+        </form>
+        <p id="question-status" role="status" aria-live="polite"></p>
+        <article id="answer" hidden><h3>Respuesta</h3><p id="answer-text"></p><h3>Fuentes utilizadas</h3><div id="citations"></div></article>
+        <div id="empty-answer"><span class="asterisk">✳</span><p>Una buena explicación empieza<br>por saber de dónde sale.</p></div>
+        <p class="note">La IA puede equivocarse. Abre las fuentes y comprueba que respaldan la explicación.</p>
+      </section>
+    </div>
+  </main>
+  <footer>Cuaderno · Proyecto de IA, datos y bases de datos <span>Documentos originales de demostración</span></footer>
+</body></html>
