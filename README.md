@@ -18,6 +18,8 @@ Los documentos de muestra son materiales originales sobre SQL y Python. No se ut
 
 **Estado:** implementación inicial. Consulta [las verificaciones realizadas](docs/verification.md) antes de asumir que los servicios o modelos se han probado en este equipo. El proyecto deportivo es independiente y no se modifica.
 
+**En este ordenador:** se ha preparado un [entorno con Ollama nativo y PostgreSQL en Docker Desktop](docs/local-environment.md). No arrancar a la vez ese entorno y todos los servicios de Compose, porque comparten puertos.
+
 ## Arranque con Docker Desktop
 
 Necesitas Docker Desktop activo, contenedores Linux, conexión para la primera descarga y varios GB libres para imágenes y modelos.

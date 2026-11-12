@@ -1,0 +1,149 @@
+{
+  "split": "dev",
+  "scope": "retrieval_only",
+  "summary": {
+    "lexical": {
+      "questions": 6,
+      "recall_at_5": 0.3333333333333333,
+      "mrr": 0.3333333333333333
+    },
+    "vector": {
+      "questions": 6,
+      "recall_at_5": 1.0,
+      "mrr": 1.0
+    },
+    "hybrid": {
+      "questions": 6,
+      "recall_at_5": 1.0,
+      "mrr": 1.0
+    }
+  },
+  "rows": [
+    {
+      "id": "dev-01",
+      "mode": "lexical",
+      "seconds": 2.361,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-02",
+      "mode": "lexical",
+      "seconds": 0.2,
+      "recall_at_5": 0.0,
+      "reciprocal_rank": 0.0
+    },
+    {
+      "id": "dev-03",
+      "mode": "lexical",
+      "seconds": 0.171,
+      "recall_at_5": 0.0,
+      "reciprocal_rank": 0.0
+    },
+    {
+      "id": "dev-04",
+      "mode": "lexical",
+      "seconds": 0.171,
+      "recall_at_5": 0.0,
+      "reciprocal_rank": 0.0
+    },
+    {
+      "id": "dev-05",
+      "mode": "lexical",
+      "seconds": 0.164,
+      "recall_at_5": 0.0,
+      "reciprocal_rank": 0.0
+    },
+    {
+      "id": "dev-06",
+      "mode": "lexical",
+      "seconds": 0.128,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-01",
+      "mode": "vector",
+      "seconds": 6.408,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-02",
+      "mode": "vector",
+      "seconds": 9.078,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-03",
+      "mode": "vector",
+      "seconds": 7.764,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-04",
+      "mode": "vector",
+      "seconds": 6.58,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-05",
+      "mode": "vector",
+      "seconds": 5.719,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-06",
+      "mode": "vector",
+      "seconds": 8.244,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-01",
+      "mode": "hybrid",
+      "seconds": 4.897,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-02",
+      "mode": "hybrid",
+      "seconds": 9.964,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-03",
+      "mode": "hybrid",
+      "seconds": 6.053,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-04",
+      "mode": "hybrid",
+      "seconds": 6.287,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-05",
+      "mode": "hybrid",
+      "seconds": 52.821,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "dev-06",
+      "mode": "hybrid",
+      "seconds": 60.722,
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    }
+  ]
+}

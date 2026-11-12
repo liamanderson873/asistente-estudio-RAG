@@ -1,21 +1,23 @@
 {
   "scriptCompleted": true,
-  "filesAnalyzed": 32,
+  "filesAnalyzed": 38,
   "filesSkipped": [
     ".dockerignore",
+    ".gitattributes",
+    "scripts/start-local.ps1",
     "src/study_rag/static/index.html",
     "src/study_rag/static/style.css"
   ],
   "filesUnreadable": [],
   "analysisOutcomes": {
     "structure": {
-      "succeeded": 32,
+      "succeeded": 38,
       "failed": 0
     },
     "callGraph": {
-      "succeeded": 18,
+      "succeeded": 23,
       "failed": 0,
-      "skipped": 14
+      "skipped": 15
     }
   },
   "results": [
@@ -199,8 +201,8 @@
       "path": "README.md",
       "language": "markdown",
       "fileCategory": "docs",
-      "totalLines": 105,
-      "nonEmptyLines": 72,
+      "totalLines": 107,
+      "nonEmptyLines": 73,
       "sections": [
         {
           "heading": "Cuaderno · Asistente de estudio verificable",
@@ -215,32 +217,32 @@
         {
           "heading": "Arranque con Docker Desktop",
           "level": 2,
-          "line": 21
+          "line": 23
         },
         {
           "heading": "Desarrollo en Windows",
           "level": 2,
-          "line": 40
+          "line": 42
         },
         {
           "heading": "Pruebas y calidad",
           "level": 2,
-          "line": 55
+          "line": 57
         },
         {
           "heading": "Corpus original y evaluación",
           "level": 2,
-          "line": 67
+          "line": 69
         },
         {
           "heading": "Arquitectura",
           "level": 2,
-          "line": 81
+          "line": 83
         },
         {
           "heading": "Límites conocidos y próximos pasos",
           "level": 2,
-          "line": 98
+          "line": 100
         }
       ],
       "metrics": {
@@ -327,6 +329,42 @@
         "functionCount": 0,
         "classCount": 0,
         "sectionCount": 2
+      }
+    },
+    {
+      "path": "docs/local-environment.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 30,
+      "nonEmptyLines": 18,
+      "sections": [
+        {
+          "heading": "Entorno local comprobado",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Servicios de este equipo",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Volver a abrir el proyecto",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Verificación",
+          "level": 2,
+          "line": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 4
       }
     },
     {
@@ -425,8 +463,8 @@
       "path": "docs/verification.md",
       "language": "markdown",
       "fileCategory": "docs",
-      "totalLines": 32,
-      "nonEmptyLines": 26,
+      "totalLines": 45,
+      "nonEmptyLines": 36,
       "sections": [
         {
           "heading": "Verificación de la primera versión",
@@ -434,9 +472,19 @@
           "line": 1
         },
         {
-          "heading": "Siguiente comprobación real",
+          "heading": "Verificación con servicios reales (13 de noviembre)",
           "level": 2,
-          "line": 24
+          "line": 5
+        },
+        {
+          "heading": "Registro inicial (12 de noviembre)",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Plan inicial de comprobación (registro histórico)",
+          "level": 2,
+          "line": 37
         }
       ],
       "metrics": {
@@ -444,7 +492,7 @@
         "exportCount": 0,
         "functionCount": 0,
         "classCount": 0,
-        "sectionCount": 2
+        "sectionCount": 4
       }
     },
     {
@@ -1036,6 +1084,315 @@
       }
     },
     {
+      "path": "scripts/smoke_test.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 96,
+      "nonEmptyLines": 87,
+      "functions": [
+        {
+          "name": "check_answer",
+          "startLine": 13,
+          "endLine": 20,
+          "params": [
+            "answer",
+            "expected_abstained"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 92,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "check_answer",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "check_answer",
+          "callee": "answer.get",
+          "lineNumber": 14
+        },
+        {
+          "caller": "check_answer",
+          "callee": "AssertionError",
+          "lineNumber": 15
+        },
+        {
+          "caller": "check_answer",
+          "callee": "any",
+          "lineNumber": 16
+        },
+        {
+          "caller": "check_answer",
+          "callee": "citation.get",
+          "lineNumber": 17
+        },
+        {
+          "caller": "check_answer",
+          "callee": "citation.get",
+          "lineNumber": 17
+        },
+        {
+          "caller": "check_answer",
+          "callee": "answer.get",
+          "lineNumber": 18
+        },
+        {
+          "caller": "check_answer",
+          "callee": "AssertionError",
+          "lineNumber": 20
+        },
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 24
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 25
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 26
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 27
+        },
+        {
+          "caller": "main",
+          "callee": "httpx.Client",
+          "lineNumber": 29
+        },
+        {
+          "caller": "main",
+          "callee": "client.get",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "response.raise_for_status",
+          "lineNumber": 31
+        },
+        {
+          "caller": "main",
+          "callee": "response.json",
+          "lineNumber": 32
+        },
+        {
+          "caller": "main",
+          "callee": "RuntimeError",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "(ROOT / \"demo\" / filename).read_bytes",
+          "lineNumber": 36
+        },
+        {
+          "caller": "main",
+          "callee": "perf_counter",
+          "lineNumber": 37
+        },
+        {
+          "caller": "main",
+          "callee": "client.post",
+          "lineNumber": 38
+        },
+        {
+          "caller": "main",
+          "callee": "response.raise_for_status",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "response.json",
+          "lineNumber": 42
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "perf_counter",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "results[\"uploads\"].append",
+          "lineNumber": 45
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "client.post",
+          "lineNumber": 47
+        },
+        {
+          "caller": "main",
+          "callee": "(ROOT / \"demo/sql-fundamentos.pdf\").read_bytes",
+          "lineNumber": 50
+        },
+        {
+          "caller": "main",
+          "callee": "response.raise_for_status",
+          "lineNumber": 53
+        },
+        {
+          "caller": "main",
+          "callee": "response.json",
+          "lineNumber": 54
+        },
+        {
+          "caller": "main",
+          "callee": "RuntimeError",
+          "lineNumber": 56
+        },
+        {
+          "caller": "main",
+          "callee": "perf_counter",
+          "lineNumber": 62
+        },
+        {
+          "caller": "main",
+          "callee": "client.post",
+          "lineNumber": 63
+        },
+        {
+          "caller": "main",
+          "callee": "response.raise_for_status",
+          "lineNumber": 64
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 67
+        },
+        {
+          "caller": "main",
+          "callee": "perf_counter",
+          "lineNumber": 67
+        },
+        {
+          "caller": "main",
+          "callee": "response.json",
+          "lineNumber": 68
+        },
+        {
+          "caller": "main",
+          "callee": "results[\"answers\"].append",
+          "lineNumber": 70
+        },
+        {
+          "caller": "main",
+          "callee": "Path",
+          "lineNumber": 71
+        },
+        {
+          "caller": "main",
+          "callee": "output.parent.mkdir",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "output.write_text",
+          "lineNumber": 73
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 73
+        },
+        {
+          "caller": "main",
+          "callee": "check_answer",
+          "lineNumber": 74
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 75
+        },
+        {
+          "caller": "main",
+          "callee": "client.get",
+          "lineNumber": 85
+        },
+        {
+          "caller": "main",
+          "callee": "citation[\"url\"].split",
+          "lineNumber": 85
+        },
+        {
+          "caller": "main",
+          "callee": "source.raise_for_status",
+          "lineNumber": 86
+        },
+        {
+          "caller": "main",
+          "callee": "source.content.startswith",
+          "lineNumber": 87
+        },
+        {
+          "caller": "main",
+          "callee": "RuntimeError",
+          "lineNumber": 88
+        },
+        {
+          "caller": "main",
+          "callee": "Path",
+          "lineNumber": 89
+        },
+        {
+          "caller": "main",
+          "callee": "output.parent.mkdir",
+          "lineNumber": 90
+        },
+        {
+          "caller": "main",
+          "callee": "output.write_text",
+          "lineNumber": 91
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 91
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
       "path": "sql/001_initial.sql",
       "language": "sql",
       "fileCategory": "data",
@@ -1122,13 +1479,13 @@
       "path": "src/study_rag/app.py",
       "language": "python",
       "fileCategory": "code",
-      "totalLines": 97,
-      "nonEmptyLines": 75,
+      "totalLines": 102,
+      "nonEmptyLines": 79,
       "functions": [
         {
           "name": "create_app",
-          "startLine": 27,
-          "endLine": 94,
+          "startLine": 28,
+          "endLine": 99,
           "params": [
             "service"
           ]
@@ -1137,8 +1494,8 @@
       "classes": [
         {
           "name": "Question",
-          "startLine": 22,
-          "endLine": 24,
+          "startLine": 23,
+          "endLine": 25,
           "methods": [],
           "properties": [
             "question",
@@ -1149,12 +1506,12 @@
       "exports": [
         {
           "name": "Question",
-          "line": 22,
+          "line": 23,
           "isDefault": false
         },
         {
           "name": "create_app",
-          "line": 27,
+          "line": 28,
           "isDefault": false
         }
       ],
@@ -1162,172 +1519,182 @@
         {
           "caller": "create_app",
           "callee": "Settings",
-          "lineNumber": 28
+          "lineNumber": 29
         },
         {
           "caller": "lifespan",
           "callee": "StudyService",
-          "lineNumber": 32
+          "lineNumber": 33
         },
         {
           "caller": "lifespan",
           "callee": "Repository",
-          "lineNumber": 33
+          "lineNumber": 34
         },
         {
           "caller": "lifespan",
           "callee": "OllamaModel",
-          "lineNumber": 33
+          "lineNumber": 34
         },
         {
           "caller": "create_app",
           "callee": "FastAPI",
-          "lineNumber": 37
+          "lineNumber": 38
         },
         {
           "caller": "create_app",
           "callee": "app.exception_handler",
-          "lineNumber": 39
+          "lineNumber": 40
         },
         {
           "caller": "invalid_document",
           "callee": "JSONResponse",
-          "lineNumber": 41
+          "lineNumber": 42
         },
         {
           "caller": "invalid_document",
           "callee": "str",
-          "lineNumber": 41
+          "lineNumber": 42
         },
         {
           "caller": "create_app",
           "callee": "app.exception_handler",
-          "lineNumber": 43
+          "lineNumber": 44
         },
         {
           "caller": "backend_unavailable",
           "callee": "JSONResponse",
-          "lineNumber": 45
+          "lineNumber": 46
         },
         {
           "caller": "backend_unavailable",
           "callee": "str",
-          "lineNumber": 45
+          "lineNumber": 46
         },
         {
           "caller": "create_app",
           "callee": "app.exception_handler",
-          "lineNumber": 47
+          "lineNumber": 48
         },
         {
           "caller": "database_unavailable",
           "callee": "JSONResponse",
-          "lineNumber": 49
+          "lineNumber": 50
         },
         {
           "caller": "create_app",
           "callee": "app.get",
-          "lineNumber": 54
+          "lineNumber": 55
         },
         {
           "caller": "create_app",
           "callee": "app.get",
-          "lineNumber": 58
+          "lineNumber": 59
+        },
+        {
+          "caller": "status",
+          "callee": "check_services",
+          "lineNumber": 61
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.get",
+          "lineNumber": 63
         },
         {
           "caller": "documents",
           "callee": "app.state.service.repository.documents",
-          "lineNumber": 60
-        },
-        {
-          "caller": "create_app",
-          "callee": "app.post",
-          "lineNumber": 62
-        },
-        {
-          "caller": "upload",
-          "callee": "File",
-          "lineNumber": 63
-        },
-        {
-          "caller": "upload",
-          "callee": "file.file.read",
-          "lineNumber": 64
-        },
-        {
-          "caller": "upload",
-          "callee": "app.state.service.ingest",
           "lineNumber": 65
         },
         {
           "caller": "create_app",
-          "callee": "app.get",
+          "callee": "app.post",
           "lineNumber": 67
+        },
+        {
+          "caller": "upload",
+          "callee": "File",
+          "lineNumber": 68
+        },
+        {
+          "caller": "upload",
+          "callee": "file.file.read",
+          "lineNumber": 69
+        },
+        {
+          "caller": "upload",
+          "callee": "app.state.service.ingest",
+          "lineNumber": 70
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.get",
+          "lineNumber": 72
         },
         {
           "caller": "document_pdf",
           "callee": "app.state.service.repository.pdf",
-          "lineNumber": 69
+          "lineNumber": 74
         },
         {
           "caller": "document_pdf",
           "callee": "str",
-          "lineNumber": 69
+          "lineNumber": 74
         },
         {
           "caller": "document_pdf",
           "callee": "HTTPException",
-          "lineNumber": 71
+          "lineNumber": 76
         },
         {
           "caller": "document_pdf",
           "callee": "Response",
-          "lineNumber": 72
+          "lineNumber": 77
         },
         {
           "caller": "create_app",
           "callee": "app.post",
-          "lineNumber": 81
+          "lineNumber": 86
         },
         {
           "caller": "search",
           "callee": "asdict",
-          "lineNumber": 83
+          "lineNumber": 88
         },
         {
           "caller": "search",
           "callee": "app.state.service.retrieve",
-          "lineNumber": 83
+          "lineNumber": 88
         },
         {
           "caller": "create_app",
           "callee": "app.post",
-          "lineNumber": 85
+          "lineNumber": 90
         },
         {
           "caller": "ask",
           "callee": "app.state.service.ask",
-          "lineNumber": 87
+          "lineNumber": 92
         },
         {
           "caller": "create_app",
           "callee": "app.get",
-          "lineNumber": 89
+          "lineNumber": 94
         },
         {
           "caller": "index",
           "callee": "FileResponse",
-          "lineNumber": 91
+          "lineNumber": 96
         },
         {
           "caller": "create_app",
           "callee": "app.mount",
-          "lineNumber": 93
+          "lineNumber": 98
         },
         {
           "caller": "create_app",
           "callee": "StaticFiles",
-          "lineNumber": 93
+          "lineNumber": 98
         }
       ],
       "metrics": {
@@ -1341,13 +1708,13 @@
       "path": "src/study_rag/config.py",
       "language": "python",
       "fileCategory": "code",
-      "totalLines": 14,
+      "totalLines": 13,
       "nonEmptyLines": 11,
       "classes": [
         {
           "name": "Settings",
-          "startLine": 6,
-          "endLine": 14,
+          "startLine": 5,
+          "endLine": 13,
           "methods": [],
           "properties": [
             "database_url",
@@ -1363,7 +1730,7 @@
       "exports": [
         {
           "name": "Settings",
-          "line": 6,
+          "line": 5,
           "isDefault": false
         }
       ],
@@ -1372,6 +1739,110 @@
         "exportCount": 1,
         "functionCount": 0,
         "classCount": 1
+      }
+    },
+    {
+      "path": "src/study_rag/diagnostics.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 51,
+      "functions": [
+        {
+          "name": "check_database",
+          "startLine": 10,
+          "endLine": 27,
+          "params": [
+            "repository"
+          ]
+        },
+        {
+          "name": "check_ollama",
+          "startLine": 30,
+          "endLine": 48,
+          "params": [
+            "settings"
+          ]
+        },
+        {
+          "name": "check_services",
+          "startLine": 51,
+          "endLine": 59,
+          "params": [
+            "repository",
+            "settings"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "check_database",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "check_ollama",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "check_services",
+          "line": 51,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "check_database",
+          "callee": "repository.connect",
+          "lineNumber": 12
+        },
+        {
+          "caller": "check_database",
+          "callee": "conn.execute(\n                \"SELECT EXISTS(SELECT 1 FROM pg_extension WHERE extname='vector') AS vector, \"\n                \"to_regclass('documents') IS NOT NULL AND to_regclass('pages') IS NOT NULL \"\n                \"AND to_regclass('chunks') IS NOT NULL AS schema\"\n            ).fetchone",
+          "lineNumber": 13
+        },
+        {
+          "caller": "check_database",
+          "callee": "conn.execute",
+          "lineNumber": 13
+        },
+        {
+          "caller": "check_database",
+          "callee": "bool",
+          "lineNumber": 18
+        },
+        {
+          "caller": "check_ollama",
+          "callee": "httpx.get",
+          "lineNumber": 32
+        },
+        {
+          "caller": "check_ollama",
+          "callee": "response.raise_for_status",
+          "lineNumber": 33
+        },
+        {
+          "caller": "check_ollama",
+          "callee": "response.json",
+          "lineNumber": 34
+        },
+        {
+          "caller": "check_services",
+          "callee": "check_database",
+          "lineNumber": 52
+        },
+        {
+          "caller": "check_services",
+          "callee": "check_ollama",
+          "lineNumber": 53
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
       }
     },
     {
@@ -2382,8 +2853,8 @@
       "path": "src/study_rag/static/app.js",
       "language": "javascript",
       "fileCategory": "code",
-      "totalLines": 66,
-      "nonEmptyLines": 66,
+      "totalLines": 84,
+      "nonEmptyLines": 84,
       "functions": [
         {
           "name": "byId",
@@ -2392,9 +2863,15 @@
           "params": []
         },
         {
-          "name": "api",
+          "name": "refreshStatus",
           "startLine": 2,
-          "endLine": 9,
+          "endLine": 14,
+          "params": []
+        },
+        {
+          "name": "api",
+          "startLine": 15,
+          "endLine": 22,
           "params": [
             "path",
             "options"
@@ -2402,8 +2879,8 @@
         },
         {
           "name": "refreshDocuments",
-          "startLine": 10,
-          "endLine": 30,
+          "startLine": 23,
+          "endLine": 43,
           "params": []
         }
       ],
@@ -2414,75 +2891,100 @@
           "lineNumber": 1
         },
         {
+          "caller": "refreshStatus",
+          "callee": "byId",
+          "lineNumber": 3
+        },
+        {
+          "caller": "refreshStatus",
+          "callee": "byId",
+          "lineNumber": 5
+        },
+        {
+          "caller": "refreshStatus",
+          "callee": "api",
+          "lineNumber": 7
+        },
+        {
+          "caller": "refreshStatus",
+          "callee": "byId",
+          "lineNumber": 8
+        },
+        {
+          "caller": "refreshStatus",
+          "callee": "byId",
+          "lineNumber": 12
+        },
+        {
           "caller": "api",
           "callee": "fetch",
-          "lineNumber": 3
+          "lineNumber": 16
         },
         {
           "caller": "api",
           "callee": "response.json",
-          "lineNumber": 4
+          "lineNumber": 17
         },
         {
           "caller": "refreshDocuments",
           "callee": "byId",
-          "lineNumber": 11
+          "lineNumber": 24
         },
         {
           "caller": "refreshDocuments",
           "callee": "api",
-          "lineNumber": 13
+          "lineNumber": 26
         },
         {
           "caller": "refreshDocuments",
           "callee": "list.replaceChildren",
-          "lineNumber": 14
+          "lineNumber": 27
         },
         {
           "caller": "refreshDocuments",
           "callee": "document.createElement",
-          "lineNumber": 16
+          "lineNumber": 29
         },
         {
           "caller": "refreshDocuments",
           "callee": "list.append",
-          "lineNumber": 18
+          "lineNumber": 31
         },
         {
           "caller": "refreshDocuments",
           "callee": "document.createElement",
-          "lineNumber": 21
+          "lineNumber": 34
         },
         {
           "caller": "refreshDocuments",
           "callee": "document.createElement",
-          "lineNumber": 22
+          "lineNumber": 35
         },
         {
           "caller": "refreshDocuments",
           "callee": "encodeURIComponent",
-          "lineNumber": 23
+          "lineNumber": 36
         },
         {
           "caller": "refreshDocuments",
           "callee": "document.createElement",
-          "lineNumber": 25
+          "lineNumber": 38
         },
         {
           "caller": "refreshDocuments",
           "callee": "item.append",
-          "lineNumber": 27
+          "lineNumber": 40
         },
         {
           "caller": "refreshDocuments",
           "callee": "list.append",
-          "lineNumber": 27
+          "lineNumber": 40
         }
       ],
       "metrics": {
         "importCount": 0,
         "exportCount": 0,
-        "functionCount": 3,
+        "functionCount": 4,
         "classCount": 0
       }
     },
@@ -2746,6 +3248,261 @@
           "caller": "test_pdf_route_returns_original_bytes_and_rejects_invalid_uuid",
           "callee": "client.get",
           "lineNumber": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_config.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "functions": [
+        {
+          "name": "test_embedding_dimensions_can_be_loaded_from_environment",
+          "startLine": 7,
+          "endLine": 9,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_incompatible_embedding_dimensions_are_rejected",
+          "startLine": 13,
+          "endLine": 16,
+          "params": [
+            "monkeypatch",
+            "value"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_embedding_dimensions_can_be_loaded_from_environment",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "test_incompatible_embedding_dimensions_are_rejected",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_embedding_dimensions_can_be_loaded_from_environment",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 8
+        },
+        {
+          "caller": "test_embedding_dimensions_can_be_loaded_from_environment",
+          "callee": "Settings",
+          "lineNumber": 9
+        },
+        {
+          "caller": "test_incompatible_embedding_dimensions_are_rejected",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_incompatible_embedding_dimensions_are_rejected",
+          "callee": "pytest.raises",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_incompatible_embedding_dimensions_are_rejected",
+          "callee": "Settings",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_diagnostics.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 40,
+      "functions": [
+        {
+          "name": "test_database_requires_extension_and_schema",
+          "startLine": 14,
+          "endLine": 18,
+          "params": [
+            "vector",
+            "schema",
+            "ready"
+          ]
+        },
+        {
+          "name": "test_database_error_does_not_leak_connection_details",
+          "startLine": 21,
+          "endLine": 26,
+          "params": []
+        },
+        {
+          "name": "test_ollama_accepts_latest_alias_and_reports_only_missing_models",
+          "startLine": 29,
+          "endLine": 38,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_unreachable_ollama_is_reported_separately",
+          "startLine": 41,
+          "endLine": 46,
+          "params": [
+            "monkeypatch"
+          ]
+        },
+        {
+          "name": "test_overall_status_requires_both_dependencies",
+          "startLine": 49,
+          "endLine": 54,
+          "params": [
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_database_requires_extension_and_schema",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "test_database_error_does_not_leak_connection_details",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "test_ollama_accepts_latest_alias_and_reports_only_missing_models",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "test_unreachable_ollama_is_reported_separately",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "test_overall_status_requires_both_dependencies",
+          "line": 49,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_database_requires_extension_and_schema",
+          "callee": "MagicMock",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_database_requires_extension_and_schema",
+          "callee": "check_database",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_database_error_does_not_leak_connection_details",
+          "callee": "MagicMock",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_database_error_does_not_leak_connection_details",
+          "callee": "psycopg.OperationalError",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_database_error_does_not_leak_connection_details",
+          "callee": "check_database",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_database_error_does_not_leak_connection_details",
+          "callee": "str",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_ollama_accepts_latest_alias_and_reports_only_missing_models",
+          "callee": "httpx.Response",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_ollama_accepts_latest_alias_and_reports_only_missing_models",
+          "callee": "httpx.Request",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_ollama_accepts_latest_alias_and_reports_only_missing_models",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_ollama_accepts_latest_alias_and_reports_only_missing_models",
+          "callee": "check_ollama",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_ollama_accepts_latest_alias_and_reports_only_missing_models",
+          "callee": "Settings",
+          "lineNumber": 36
+        },
+        {
+          "caller": "offline",
+          "callee": "httpx.ConnectError",
+          "lineNumber": 43
+        },
+        {
+          "caller": "test_unreachable_ollama_is_reported_separately",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_unreachable_ollama_is_reported_separately",
+          "callee": "check_ollama",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_unreachable_ollama_is_reported_separately",
+          "callee": "Settings",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_overall_status_requires_both_dependencies",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_overall_status_requires_both_dependencies",
+          "callee": "monkeypatch.setattr",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_overall_status_requires_both_dependencies",
+          "callee": "check_services",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_overall_status_requires_both_dependencies",
+          "callee": "Mock",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_overall_status_requires_both_dependencies",
+          "callee": "Settings",
+          "lineNumber": 54
         }
       ],
       "metrics": {
@@ -4061,6 +4818,56 @@
         "importCount": 0,
         "exportCount": 15,
         "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tests/test_smoke_regression.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "test_observed_small_model_hallucination_cannot_pass_smoke_test",
+          "startLine": 13,
+          "endLine": 19,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_observed_small_model_hallucination_cannot_pass_smoke_test",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_observed_small_model_hallucination_cannot_pass_smoke_test",
+          "callee": "json.loads",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_observed_small_model_hallucination_cannot_pass_smoke_test",
+          "callee": "(ROOT / \"docs/experiments/2026-11-13-smoke-1.5b.json\").read_text",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_observed_small_model_hallucination_cannot_pass_smoke_test",
+          "callee": "pytest.raises",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_observed_small_model_hallucination_cannot_pass_smoke_test",
+          "callee": "smoke.check_answer",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
         "classCount": 0
       }
     }

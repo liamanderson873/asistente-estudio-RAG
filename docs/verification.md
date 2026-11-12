@@ -1,6 +1,19 @@
 # Verificación de la primera versión
 
-Fecha: 12 de noviembre de 2026. Estado: base implementada; recorrido completo con modelos y base de datos pendiente.
+Estado actualizado el 13 de noviembre de 2026: recorrido completo probado con PostgreSQL y Ollama reales. Los resultados iniciales y limitaciones están en [experiments/README.md](experiments/README.md).
+
+## Verificación con servicios reales (13 de noviembre)
+
+- 59 pruebas correctas, incluidas las tres de PostgreSQL que antes se omitían y la regresión que rechaza la alucinación observada de 1.5B; sin pruebas omitidas.
+- PostgreSQL 17.12 y pgvector en `cuaderno-db-local`; Ollama 0.40.16 nativo en CPU. Nube desactivada.
+- Dos documentos cargados, repetición detectada y enlaces a páginas comprobados.
+- 3B respondió correctamente a la pregunta de JOIN y se abstuvo ante la pregunta sobre la fecha de examen. La variante 1.5B falló esta última: no se eligió como modelo predeterminado.
+- Comparación léxica/vectorial/híbrida ejecutada con seis preguntas `dev`. `holdout` no se ejecutó.
+- Corregida la lectura de `EMBEDDING_DIMENSIONS=768` desde `.env`: antes el tipo Literal rechazaba el texto del entorno. Añadidas pruebas de regresión.
+- `/api/status` distingue la disponibilidad de la biblioteca y de los modelos. No comprueba calidad de generación.
+- `ruff check .` correcto. El workflow de GitHub sigue preparado, pero no publicado ni ejecutado allí.
+
+## Registro inicial (12 de noviembre)
 
 | Comprobación | Resultado observado |
 |---|---|
@@ -21,7 +34,7 @@ Las pruebas de PostgreSQL omitidas cubren ingesta idempotente/búsqueda, rollbac
 
 Se observa un aviso de deprecación de Starlette relativo a httpx en TestClient. Las pruebas pasan; revisar la migración del cliente de tests en una actualización de dependencias.
 
-## Siguiente comprobación real
+## Plan inicial de comprobación (registro histórico)
 
 1. Desde una terminal con acceso a Docker Desktop, ejecutar `docker compose up --build -d` en el repositorio.
 2. Esperar a que `models` descargue ambos modelos y termine correctamente.

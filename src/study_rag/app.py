@@ -11,6 +11,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from study_rag.config import Settings
+from study_rag.diagnostics import check_services
 from study_rag.domain import BackendUnavailable, InvalidDocument
 from study_rag.ollama import OllamaModel
 from study_rag.repository import Repository
@@ -54,6 +55,10 @@ def create_app(service: StudyService | None = None) -> FastAPI:
     @app.get("/health")
     def health():
         return {"status": "ok", "scope": "api", "dependencies_checked": False}
+
+    @app.get("/api/status")
+    def status():
+        return check_services(app.state.service.repository, settings)
 
     @app.get("/api/documents")
     def documents():

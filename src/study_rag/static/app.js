@@ -1,4 +1,17 @@
 const byId = id => document.getElementById(id);
+async function refreshStatus() {
+  const button = byId('retry-services');
+  button.disabled = true;
+  byId('services-status').textContent = 'Comprobando servicios locales…';
+  try {
+    const status = await api('/api/status');
+    byId('services-status').textContent = status.ready
+      ? 'Todo listo para estudiar.'
+      : `${status.database.message} ${status.ollama.message}`;
+  } catch (error) {
+    byId('services-status').textContent = 'No se puede comprobar la conexión con el asistente.';
+  } finally { button.disabled = false; }
+}
 async function api(path, options) {
   const response = await fetch(path, options);
   const body = await response.json();
@@ -64,3 +77,8 @@ byId('question-form').addEventListener('submit', async event => {
   finally { button.disabled = false; }
 });
 refreshDocuments();
+refreshStatus();
+byId('retry-services').addEventListener('click', () => {
+  refreshStatus();
+  refreshDocuments();
+});

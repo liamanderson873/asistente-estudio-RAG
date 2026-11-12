@@ -1,0 +1,54 @@
+{
+  "model": "qwen2.5:1.5b",
+  "scope": "two_development_questions_only",
+  "answers": [
+    {
+      "question": "¿Qué diferencia hay entre INNER JOIN y LEFT JOIN?",
+      "seconds": 63.46,
+      "answer": "INNER JOIN conserva las filas que cumplen la condición en ambas tablas, mientras que LEFT JOIN conserva todas las filas de la tabla izquierda y, si no hay correspondencia en la derecha, las columnas de la tabla derecha tienen valor NULL.",
+      "citations": [
+        {
+          "chunk_id": 3,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "document": "sql-fundamentos.pdf",
+          "page": 2,
+          "excerpt": "Cuaderno | Material original de demostración | CC BY 4.0 2 SQL y bases de datos relacionales INNER JOIN y LEFT JOIN JOIN combina filas de tablas usando una condición. INNER JOIN conserva solamente las combinaciones que cumplen esa condición en ambos lados. LEFT JOIN conserva todas las filas de la tabla izquierda; cuando no encuentra correspondencia a la derecha, las columnas de la tabla derecha tienen valor NULL. Ejemplo: alumnos contiene a Ana y a Luis. matriculas contiene una matrícula de Ana y ninguna de Luis. Una consulta alumnos INNER JOIN matriculas muestra a Ana. La misma consulta con LEFT JOIN muestra a Ana y también a Luis, con NULL en las columnas de matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a",
+          "url": "/api/documents/21cf4924-f94b-4f57-91e4-06d1267e573a/pdf#page=2"
+        },
+        {
+          "chunk_id": 4,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "document": "sql-fundamentos.pdf",
+          "page": 2,
+          "excerpt": "matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a LEFT JOIN matriculas m ON a.id = m.alumno_id. Para buscar alumnos sin matrícula puede añadirse WHERE m.alumno_id IS NULL, siempre que esa columna sea no nula en las matrículas existentes. Hay que distinguir condiciones en ON y filtros en WHERE. Si tras un LEFT JOIN se añade WHERE m.curso = 'SQL', se eliminan las filas sin matrícula porque su valor es NULL. Para conservar todos los alumnos y asociar solo las matrículas de SQL, la condición del curso debe formar parte del ON.",
+          "url": "/api/documents/21cf4924-f94b-4f57-91e4-06d1267e573a/pdf#page=2"
+        }
+      ],
+      "abstained": false
+    },
+    {
+      "question": "¿Cuándo es mi próximo examen?",
+      "seconds": 56.69,
+      "answer": "Para encontrar tu próximo examen, revisa la información proporcionada en el documento 'sql-fundamentos.pdf'. En la página 2, se menciona que si Ana tiene dos matrículas, aparecen en dos filas. Por lo tanto, la próxima vez que veas esa información, es probable que sea tu próximo examen.",
+      "citations": [
+        {
+          "chunk_id": 4,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "document": "sql-fundamentos.pdf",
+          "page": 2,
+          "excerpt": "matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a LEFT JOIN matriculas m ON a.id = m.alumno_id. Para buscar alumnos sin matrícula puede añadirse WHERE m.alumno_id IS NULL, siempre que esa columna sea no nula en las matrículas existentes. Hay que distinguir condiciones en ON y filtros en WHERE. Si tras un LEFT JOIN se añade WHERE m.curso = 'SQL', se eliminan las filas sin matrícula porque su valor es NULL. Para conservar todos los alumnos y asociar solo las matrículas de SQL, la condición del curso debe formar parte del ON.",
+          "url": "/api/documents/21cf4924-f94b-4f57-91e4-06d1267e573a/pdf#page=2"
+        },
+        {
+          "chunk_id": 12,
+          "document_id": "2e4943a4-d83f-46fc-955a-db5167b20350",
+          "document": "python-fundamentos.pdf",
+          "page": 3,
+          "excerpt": "API externa para provocar un timeout o devolver una respuesta inválida de forma controlada. Esto hace reproducibles los errores. Una prueba con dobles no demuestra la velocidad ni la calidad de un modelo real; esos aspectos necesitan medidas con el servicio y el equipo que se van a utilizar. Separar datos de desarrollo y de evaluación final ayuda a detectar ajustes que solo funcionan en ejemplos conocidos. En un buscador documental pueden anotarse preguntas y páginas relevantes. Recall@k mide qué proporción de las fuentes relevantes aparece entre los primeros k resultados; MRR promedia el inverso de la posición de la primera fuente relevante. Estas métricas evalúan recuperación y no demuestran por sí solas que una respuesta generada sea correcta.",
+          "url": "/api/documents/2e4943a4-d83f-46fc-955a-db5167b20350/pdf#page=3"
+        }
+      ],
+      "abstained": false
+    }
+  ]
+}
