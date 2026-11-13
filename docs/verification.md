@@ -11,7 +11,7 @@ Estado actualizado el 13 de noviembre de 2026: recorrido completo probado con Po
 - Comparación léxica/vectorial/híbrida ejecutada con seis preguntas `dev`. `holdout` no se ejecutó.
 - Corregida la lectura de `EMBEDDING_DIMENSIONS=768` desde `.env`: antes el tipo Literal rechazaba el texto del entorno. Añadidas pruebas de regresión.
 - `/api/status` distingue la disponibilidad de la biblioteca y de los modelos. No comprueba calidad de generación.
-- `ruff check .` correcto. El workflow de GitHub sigue preparado, pero no publicado ni ejecutado allí.
+- `ruff check .` correcto. La [primera ejecución de GitHub Actions](https://github.com/liamanderson873/asistente-estudio-RAG/actions/runs/43333301568) terminó correctamente tras publicar el commit `50a78fd` en `main`.
 
 ## Registro inicial (12 de noviembre)
 

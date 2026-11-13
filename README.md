@@ -1,5 +1,7 @@
 # Cuaderno · Asistente de estudio verificable
 
+[![Tests](https://github.com/liamanderson873/asistente-estudio-RAG/actions/workflows/tests.yml/badge.svg)](https://github.com/liamanderson873/asistente-estudio-RAG/actions/workflows/tests.yml)
+
 Proyecto de portfolio centrado en **IA aplicada, datos y bases de datos**. Carga PDFs con texto, recupera fragmentos mediante búsqueda léxica/vectorial/híbrida y genera respuestas en español con enlaces al documento y su página física.
 
 Los documentos de muestra son materiales originales sobre SQL y Python. No se utilizan apuntes universitarios ni información personal real.
@@ -62,7 +64,7 @@ uv run pytest -q
 docker compose config --quiet
 ```
 
-Sin `TEST_DATABASE_URL`, las pruebas de PostgreSQL se omiten con una explicación. Para ejecutarlas usa una base dedicada cuyo nombre termine en `_test`; cada prueba crea y elimina su propio esquema. El workflow de GitHub incluye PostgreSQL real con pgvector, pero todavía no se ha ejecutado en GitHub.
+Sin `TEST_DATABASE_URL`, las pruebas de PostgreSQL se omiten con una explicación. Para ejecutarlas usa una base dedicada cuyo nombre termine en `_test`; cada prueba crea y elimina su propio esquema. El workflow de GitHub ejecuta las pruebas con PostgreSQL real y pgvector en cada push y pull request.
 
 Las pruebas con dobles validan lógica y errores controlados. No prueban la calidad del modelo, la velocidad del equipo ni las consultas reales de PostgreSQL.
 
