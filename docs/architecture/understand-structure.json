@@ -1,6 +1,6 @@
 {
   "scriptCompleted": true,
-  "filesAnalyzed": 38,
+  "filesAnalyzed": 40,
   "filesSkipped": [
     ".dockerignore",
     ".gitattributes",
@@ -11,13 +11,13 @@
   "filesUnreadable": [],
   "analysisOutcomes": {
     "structure": {
-      "succeeded": 38,
+      "succeeded": 40,
       "failed": 0
     },
     "callGraph": {
-      "succeeded": 23,
+      "succeeded": 24,
       "failed": 0,
-      "skipped": 15
+      "skipped": 16
     }
   },
   "results": [
@@ -25,8 +25,8 @@
       "path": ".env.example",
       "language": "config",
       "fileCategory": "config",
-      "totalLines": 5,
-      "nonEmptyLines": 5,
+      "totalLines": 6,
+      "nonEmptyLines": 6,
       "definitions": [
         {
           "name": "DATABASE_URL",
@@ -62,6 +62,13 @@
           "fields": [],
           "startLine": 5,
           "endLine": 5
+        },
+        {
+          "name": "ANSWER_CONTEXT_CHUNKS",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 6,
+          "endLine": 6
         }
       ],
       "metrics": {
@@ -69,7 +76,7 @@
         "exportCount": 0,
         "functionCount": 0,
         "classCount": 0,
-        "definitionCount": 5
+        "definitionCount": 6
       }
     },
     {
@@ -201,8 +208,8 @@
       "path": "README.md",
       "language": "markdown",
       "fileCategory": "docs",
-      "totalLines": 107,
-      "nonEmptyLines": 73,
+      "totalLines": 111,
+      "nonEmptyLines": 75,
       "sections": [
         {
           "heading": "Cuaderno · Asistente de estudio verificable",
@@ -212,37 +219,37 @@
         {
           "heading": "Primera versión",
           "level": 2,
-          "line": 7
+          "line": 9
         },
         {
           "heading": "Arranque con Docker Desktop",
           "level": 2,
-          "line": 23
+          "line": 25
         },
         {
           "heading": "Desarrollo en Windows",
           "level": 2,
-          "line": 42
+          "line": 44
         },
         {
           "heading": "Pruebas y calidad",
           "level": 2,
-          "line": 57
+          "line": 59
         },
         {
           "heading": "Corpus original y evaluación",
           "level": 2,
-          "line": 69
+          "line": 73
         },
         {
           "heading": "Arquitectura",
           "level": 2,
-          "line": 83
+          "line": 87
         },
         {
           "heading": "Límites conocidos y próximos pasos",
           "level": 2,
-          "line": 100
+          "line": 104
         }
       ],
       "metrics": {
@@ -257,8 +264,8 @@
       "path": "compose.yaml",
       "language": "yaml",
       "fileCategory": "infra",
-      "totalLines": 51,
-      "nonEmptyLines": 51,
+      "totalLines": 52,
+      "nonEmptyLines": 52,
       "sections": [
         {
           "heading": "name",
@@ -273,7 +280,7 @@
         {
           "heading": "volumes",
           "level": 1,
-          "line": 49
+          "line": 50
         }
       ],
       "metrics": {
@@ -460,11 +467,32 @@
       }
     },
     {
+      "path": "docs/plans/2026-11-13-context-budget.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 8,
+      "nonEmptyLines": 6,
+      "sections": [
+        {
+          "heading": "Reducir el contexto enviado al generador",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
       "path": "docs/verification.md",
       "language": "markdown",
       "fileCategory": "docs",
-      "totalLines": 45,
-      "nonEmptyLines": 36,
+      "totalLines": 46,
+      "nonEmptyLines": 37,
       "sections": [
         {
           "heading": "Verificación de la primera versión",
@@ -479,12 +507,12 @@
         {
           "heading": "Registro inicial (12 de noviembre)",
           "level": 2,
-          "line": 16
+          "line": 17
         },
         {
           "heading": "Plan inicial de comprobación (registro histórico)",
           "level": 2,
-          "line": 37
+          "line": 38
         }
       ],
       "metrics": {
@@ -558,6 +586,222 @@
         "functionCount": 0,
         "classCount": 0,
         "sectionCount": 7
+      }
+    },
+    {
+      "path": "scripts/benchmark_context.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 82,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 35,
+          "endLine": 87,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "MeasuredModel",
+          "startLine": 17,
+          "endLine": 32,
+          "methods": [
+            "request"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MeasuredModel",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "request",
+          "callee": "super().request",
+          "lineNumber": 19
+        },
+        {
+          "caller": "request",
+          "callee": "super",
+          "lineNumber": 19
+        },
+        {
+          "caller": "request",
+          "callee": "result.get",
+          "lineNumber": 22
+        },
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 36
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 37
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 38
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "Settings",
+          "lineNumber": 40
+        },
+        {
+          "caller": "main",
+          "callee": "MeasuredModel",
+          "lineNumber": 41
+        },
+        {
+          "caller": "main",
+          "callee": "StudyService",
+          "lineNumber": 42
+        },
+        {
+          "caller": "main",
+          "callee": "Repository",
+          "lineNumber": 42
+        },
+        {
+          "caller": "main",
+          "callee": "Path",
+          "lineNumber": 43
+        },
+        {
+          "caller": "main",
+          "callee": "output.parent.mkdir",
+          "lineNumber": 44
+        },
+        {
+          "caller": "main",
+          "callee": "perf_counter",
+          "lineNumber": 56
+        },
+        {
+          "caller": "main",
+          "callee": "service.retrieve",
+          "lineNumber": 57
+        },
+        {
+          "caller": "main",
+          "callee": "perf_counter",
+          "lineNumber": 58
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 59
+        },
+        {
+          "caller": "main",
+          "callee": "RuntimeError",
+          "lineNumber": 60
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 63
+        },
+        {
+          "caller": "main",
+          "callee": "perf_counter",
+          "lineNumber": 64
+        },
+        {
+          "caller": "main",
+          "callee": "model.answer",
+          "lineNumber": 65
+        },
+        {
+          "caller": "main",
+          "callee": "validate_answer",
+          "lineNumber": 66
+        },
+        {
+          "caller": "main",
+          "callee": "perf_counter",
+          "lineNumber": 67
+        },
+        {
+          "caller": "main",
+          "callee": "check_answer",
+          "lineNumber": 69
+        },
+        {
+          "caller": "main",
+          "callee": "str",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 76
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 77
+        },
+        {
+          "caller": "main",
+          "callee": "asdict",
+          "lineNumber": 80
+        },
+        {
+          "caller": "main",
+          "callee": "results[\"rows\"].append",
+          "lineNumber": 84
+        },
+        {
+          "caller": "main",
+          "callee": "output.write_text",
+          "lineNumber": 85
+        },
+        {
+          "caller": "main",
+          "callee": "json.dumps",
+          "lineNumber": 85
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 86
+        },
+        {
+          "caller": "main",
+          "callee": "round",
+          "lineNumber": 86
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
       }
     },
     {
@@ -1708,13 +1952,13 @@
       "path": "src/study_rag/config.py",
       "language": "python",
       "fileCategory": "code",
-      "totalLines": 13,
-      "nonEmptyLines": 11,
+      "totalLines": 14,
+      "nonEmptyLines": 12,
       "classes": [
         {
           "name": "Settings",
           "startLine": 5,
-          "endLine": 13,
+          "endLine": 14,
           "methods": [],
           "properties": [
             "database_url",
@@ -1722,6 +1966,7 @@
             "chat_model",
             "embedding_model",
             "embedding_dimensions",
+            "answer_context_chunks",
             "max_pdf_bytes",
             "max_pages"
           ]
@@ -3261,8 +3506,8 @@
       "path": "tests/test_config.py",
       "language": "python",
       "fileCategory": "code",
-      "totalLines": 16,
-      "nonEmptyLines": 11,
+      "totalLines": 22,
+      "nonEmptyLines": 15,
       "functions": [
         {
           "name": "test_embedding_dimensions_can_be_loaded_from_environment",
@@ -3280,6 +3525,14 @@
             "monkeypatch",
             "value"
           ]
+        },
+        {
+          "name": "test_context_budget_rejects_empty_or_excessive_context",
+          "startLine": 20,
+          "endLine": 22,
+          "params": [
+            "value"
+          ]
         }
       ],
       "exports": [
@@ -3291,6 +3544,11 @@
         {
           "name": "test_incompatible_embedding_dimensions_are_rejected",
           "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "test_context_budget_rejects_empty_or_excessive_context",
+          "line": 19,
           "isDefault": false
         }
       ],
@@ -3319,12 +3577,22 @@
           "caller": "test_incompatible_embedding_dimensions_are_rejected",
           "callee": "Settings",
           "lineNumber": 16
+        },
+        {
+          "caller": "test_context_budget_rejects_empty_or_excessive_context",
+          "callee": "pytest.raises",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_context_budget_rejects_empty_or_excessive_context",
+          "callee": "Settings",
+          "lineNumber": 22
         }
       ],
       "metrics": {
         "importCount": 0,
-        "exportCount": 2,
-        "functionCount": 2,
+        "exportCount": 3,
+        "functionCount": 3,
         "classCount": 0
       }
     },
@@ -4195,8 +4463,8 @@
       "path": "tests/test_service.py",
       "language": "python",
       "fileCategory": "code",
-      "totalLines": 144,
-      "nonEmptyLines": 111,
+      "totalLines": 168,
+      "nonEmptyLines": 131,
       "functions": [
         {
           "name": "hit",
@@ -4263,47 +4531,61 @@
           "params": []
         },
         {
-          "name": "test_rejects_vectors_that_cannot_be_searched",
+          "name": "test_context_budget_does_not_change_retrieval_or_source_order",
           "startLine": 99,
-          "endLine": 101,
+          "endLine": 108,
+          "params": [
+            "context_chunks"
+          ]
+        },
+        {
+          "name": "test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context",
+          "startLine": 111,
+          "endLine": 119,
+          "params": []
+        },
+        {
+          "name": "test_rejects_vectors_that_cannot_be_searched",
+          "startLine": 123,
+          "endLine": 125,
           "params": [
             "vector"
           ]
         },
         {
           "name": "test_upload_limit_checked_before_parsing",
-          "startLine": 104,
-          "endLine": 107,
+          "startLine": 128,
+          "endLine": 131,
           "params": []
         },
         {
           "name": "test_ollama_connection_failure_becomes_clear_error",
-          "startLine": 110,
-          "endLine": 116,
+          "startLine": 134,
+          "endLine": 140,
           "params": [
             "monkeypatch"
           ]
         },
         {
           "name": "test_ollama_batches_embeddings_without_silent_truncation",
-          "startLine": 119,
-          "endLine": 129,
+          "startLine": 143,
+          "endLine": 153,
           "params": [
             "monkeypatch"
           ]
         },
         {
           "name": "test_rejects_missing_embeddings",
-          "startLine": 132,
-          "endLine": 136,
+          "startLine": 156,
+          "endLine": 160,
           "params": [
             "monkeypatch"
           ]
         },
         {
           "name": "test_bad_embedding_model_response_becomes_service_error",
-          "startLine": 140,
-          "endLine": 144,
+          "startLine": 164,
+          "endLine": 168,
           "params": [
             "monkeypatch",
             "vector"
@@ -4357,33 +4639,43 @@
           "isDefault": false
         },
         {
-          "name": "test_rejects_vectors_that_cannot_be_searched",
+          "name": "test_context_budget_does_not_change_retrieval_or_source_order",
           "line": 98,
           "isDefault": false
         },
         {
+          "name": "test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "test_rejects_vectors_that_cannot_be_searched",
+          "line": 122,
+          "isDefault": false
+        },
+        {
           "name": "test_upload_limit_checked_before_parsing",
-          "line": 104,
+          "line": 128,
           "isDefault": false
         },
         {
           "name": "test_ollama_connection_failure_becomes_clear_error",
-          "line": 110,
+          "line": 134,
           "isDefault": false
         },
         {
           "name": "test_ollama_batches_embeddings_without_silent_truncation",
-          "line": 119,
+          "line": 143,
           "isDefault": false
         },
         {
           "name": "test_rejects_missing_embeddings",
-          "line": 132,
+          "line": 156,
           "isDefault": false
         },
         {
           "name": "test_bad_embedding_model_response_becomes_service_error",
-          "line": 139,
+          "line": 163,
           "isDefault": false
         }
       ],
@@ -4654,170 +4946,255 @@
           "lineNumber": 95
         },
         {
+          "caller": "test_context_budget_does_not_change_retrieval_or_source_order",
+          "callee": "Mock",
+          "lineNumber": 100
+        },
+        {
+          "caller": "test_context_budget_does_not_change_retrieval_or_source_order",
+          "callee": "Mock",
+          "lineNumber": 100
+        },
+        {
+          "caller": "test_context_budget_does_not_change_retrieval_or_source_order",
+          "callee": "StudyService",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_context_budget_does_not_change_retrieval_or_source_order",
+          "callee": "Settings",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_context_budget_does_not_change_retrieval_or_source_order",
+          "callee": "hit",
+          "lineNumber": 102
+        },
+        {
+          "caller": "test_context_budget_does_not_change_retrieval_or_source_order",
+          "callee": "range",
+          "lineNumber": 102
+        },
+        {
+          "caller": "test_context_budget_does_not_change_retrieval_or_source_order",
+          "callee": "Mock",
+          "lineNumber": 103
+        },
+        {
+          "caller": "test_context_budget_does_not_change_retrieval_or_source_order",
+          "callee": "service.ask",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_context_budget_does_not_change_retrieval_or_source_order",
+          "callee": "service.retrieve.assert_called_once_with",
+          "lineNumber": 106
+        },
+        {
+          "caller": "test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context",
+          "callee": "StudyService",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context",
+          "callee": "Mock",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context",
+          "callee": "Mock",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context",
+          "callee": "Settings",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context",
+          "callee": "Mock",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context",
+          "callee": "hit",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context",
+          "callee": "range",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context",
+          "callee": "service.ask",
+          "lineNumber": 119
+        },
+        {
           "caller": "test_rejects_vectors_that_cannot_be_searched",
           "callee": "pytest.raises",
-          "lineNumber": 100
+          "lineNumber": 124
         },
         {
           "caller": "test_rejects_vectors_that_cannot_be_searched",
           "callee": "vector_literal",
-          "lineNumber": 101
+          "lineNumber": 125
         },
         {
           "caller": "test_upload_limit_checked_before_parsing",
           "callee": "StudyService",
-          "lineNumber": 105
+          "lineNumber": 129
         },
         {
           "caller": "test_upload_limit_checked_before_parsing",
           "callee": "Mock",
-          "lineNumber": 105
+          "lineNumber": 129
         },
         {
           "caller": "test_upload_limit_checked_before_parsing",
           "callee": "Mock",
-          "lineNumber": 105
+          "lineNumber": 129
         },
         {
           "caller": "test_upload_limit_checked_before_parsing",
           "callee": "Settings",
-          "lineNumber": 105
+          "lineNumber": 129
         },
         {
           "caller": "test_upload_limit_checked_before_parsing",
           "callee": "pytest.raises",
-          "lineNumber": 106
+          "lineNumber": 130
         },
         {
           "caller": "test_upload_limit_checked_before_parsing",
           "callee": "service.ingest",
-          "lineNumber": 107
+          "lineNumber": 131
         },
         {
           "caller": "offline",
           "callee": "httpx.ConnectError",
-          "lineNumber": 112
+          "lineNumber": 136
         },
         {
           "caller": "test_ollama_connection_failure_becomes_clear_error",
           "callee": "monkeypatch.setattr",
-          "lineNumber": 114
+          "lineNumber": 138
         },
         {
           "caller": "test_ollama_connection_failure_becomes_clear_error",
           "callee": "pytest.raises",
-          "lineNumber": 115
+          "lineNumber": 139
         },
         {
           "caller": "test_ollama_connection_failure_becomes_clear_error",
           "callee": "OllamaModel(Settings()).embed",
-          "lineNumber": 116
+          "lineNumber": 140
         },
         {
           "caller": "test_ollama_connection_failure_becomes_clear_error",
           "callee": "OllamaModel",
-          "lineNumber": 116
+          "lineNumber": 140
         },
         {
           "caller": "test_ollama_connection_failure_becomes_clear_error",
           "callee": "Settings",
-          "lineNumber": 116
+          "lineNumber": 140
         },
         {
           "caller": "test_ollama_batches_embeddings_without_silent_truncation",
           "callee": "Mock",
-          "lineNumber": 120
+          "lineNumber": 144
         },
         {
           "caller": "test_ollama_batches_embeddings_without_silent_truncation",
           "callee": "httpx.Response",
-          "lineNumber": 121
+          "lineNumber": 145
         },
         {
           "caller": "test_ollama_batches_embeddings_without_silent_truncation",
           "callee": "httpx.Request",
-          "lineNumber": 124
+          "lineNumber": 148
         },
         {
           "caller": "test_ollama_batches_embeddings_without_silent_truncation",
           "callee": "monkeypatch.setattr",
-          "lineNumber": 127
+          "lineNumber": 151
         },
         {
           "caller": "test_ollama_batches_embeddings_without_silent_truncation",
           "callee": "len",
-          "lineNumber": 128
+          "lineNumber": 152
         },
         {
           "caller": "test_ollama_batches_embeddings_without_silent_truncation",
           "callee": "OllamaModel(Settings()).embed",
-          "lineNumber": 128
+          "lineNumber": 152
         },
         {
           "caller": "test_ollama_batches_embeddings_without_silent_truncation",
           "callee": "OllamaModel",
-          "lineNumber": 128
+          "lineNumber": 152
         },
         {
           "caller": "test_ollama_batches_embeddings_without_silent_truncation",
           "callee": "Settings",
-          "lineNumber": 128
+          "lineNumber": 152
         },
         {
           "caller": "test_rejects_missing_embeddings",
           "callee": "OllamaModel",
-          "lineNumber": 133
+          "lineNumber": 157
         },
         {
           "caller": "test_rejects_missing_embeddings",
           "callee": "Settings",
-          "lineNumber": 133
+          "lineNumber": 157
         },
         {
           "caller": "test_rejects_missing_embeddings",
           "callee": "monkeypatch.setattr",
-          "lineNumber": 134
+          "lineNumber": 158
         },
         {
           "caller": "test_rejects_missing_embeddings",
           "callee": "pytest.raises",
-          "lineNumber": 135
+          "lineNumber": 159
         },
         {
           "caller": "test_rejects_missing_embeddings",
           "callee": "model.embed",
-          "lineNumber": 136
+          "lineNumber": 160
         },
         {
           "caller": "test_bad_embedding_model_response_becomes_service_error",
           "callee": "OllamaModel",
-          "lineNumber": 141
+          "lineNumber": 165
         },
         {
           "caller": "test_bad_embedding_model_response_becomes_service_error",
           "callee": "Settings",
-          "lineNumber": 141
+          "lineNumber": 165
         },
         {
           "caller": "test_bad_embedding_model_response_becomes_service_error",
           "callee": "monkeypatch.setattr",
-          "lineNumber": 142
+          "lineNumber": 166
         },
         {
           "caller": "test_bad_embedding_model_response_becomes_service_error",
           "callee": "pytest.raises",
-          "lineNumber": 143
+          "lineNumber": 167
         },
         {
           "caller": "test_bad_embedding_model_response_becomes_service_error",
           "callee": "model.embed",
-          "lineNumber": 144
+          "lineNumber": 168
         }
       ],
       "metrics": {
         "importCount": 0,
-        "exportCount": 15,
-        "functionCount": 15,
+        "exportCount": 17,
+        "functionCount": 17,
         "classCount": 0
       }
     },

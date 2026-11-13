@@ -1,0 +1,267 @@
+{
+  "model": "qwen2.5:3b",
+  "scope": "two_development_questions_only",
+  "retrieval_limit": 5,
+  "rows": [
+    {
+      "question": "¿Qué diferencia hay entre INNER JOIN y LEFT JOIN?",
+      "context_chunks": 5,
+      "retrieval_seconds": 3.615,
+      "generation_seconds": 76.526,
+      "quality_check": "pass",
+      "model_metrics": {
+        "prompt_eval_count": 1255,
+        "eval_count": 162,
+        "total_duration": 76223355000,
+        "load_duration": 3742174500,
+        "prompt_eval_duration": 42933050000,
+        "eval_duration": 29491531000
+      },
+      "context": [
+        {
+          "id": 3,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 2,
+          "text": "Cuaderno | Material original de demostración | CC BY 4.0 2 SQL y bases de datos relacionales INNER JOIN y LEFT JOIN JOIN combina filas de tablas usando una condición. INNER JOIN conserva solamente las combinaciones que cumplen esa condición en ambos lados. LEFT JOIN conserva todas las filas de la tabla izquierda; cuando no encuentra correspondencia a la derecha, las columnas de la tabla derecha tienen valor NULL. Ejemplo: alumnos contiene a Ana y a Luis. matriculas contiene una matrícula de Ana y ninguna de Luis. Una consulta alumnos INNER JOIN matriculas muestra a Ana. La misma consulta con LEFT JOIN muestra a Ana y también a Luis, con NULL en las columnas de matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a"
+        },
+        {
+          "id": 4,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 2,
+          "text": "matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a LEFT JOIN matriculas m ON a.id = m.alumno_id. Para buscar alumnos sin matrícula puede añadirse WHERE m.alumno_id IS NULL, siempre que esa columna sea no nula en las matrículas existentes. Hay que distinguir condiciones en ON y filtros en WHERE. Si tras un LEFT JOIN se añade WHERE m.curso = 'SQL', se eliminan las filas sin matrícula porque su valor es NULL. Para conservar todos los alumnos y asociar solo las matrículas de SQL, la condición del curso debe formar parte del ON."
+        },
+        {
+          "id": 2,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 1,
+          "text": "Una clave foránea no implica que su propia columna sea única: un alumno puede tener varias matrículas. La integridad referencial impide guardar referencias a filas inexistentes. Si se intenta matricular al alumno 99 y no existe alumnos.id=99, la base de datos rechaza la operación. La política de borrado se configura: RESTRICT impide un borrado que dejaría referencias y CASCADE elimina también las filas dependientes. Elegir CASCADE requiere considerar qué datos se perderían. Una relación de muchos a muchos se representa mediante una tabla intermedia. matriculas conecta alumnos con cursos. Una restricción UNIQUE(alumno_id, curso_id) evita matricular dos veces al mismo alumno en el mismo curso. La base de datos debe proteger esta regla incluso si dos peticiones llegan simultáneamente."
+        },
+        {
+          "id": 1,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 1,
+          "text": "Cuaderno | Material original de demostración | CC BY 4.0 1 SQL y bases de datos relacionales Tablas, claves y relaciones Una base de datos relacional representa información mediante tablas. Cada fila representa un registro y cada columna un atributo. Por ejemplo, alumnos contiene id y nombre, mientras que matriculas contiene alumno_id y curso. Este material usa ejemplos ficticios y no contiene datos de estudiantes reales. Una clave primaria identifica de manera única cada fila. No admite valores nulos ni duplicados. En alumnos, id puede ser la clave primaria. Una clave foránea expresa una referencia a una clave primaria o única de otra tabla, o de la misma tabla. Por ejemplo, matriculas.alumno_id puede referenciar alumnos.id. Una clave foránea no implica que su propia columna sea única: un alumno puede tener varias matrículas. La integridad referencial impide guardar referencias a filas"
+        },
+        {
+          "id": 5,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 3,
+          "text": "Cuaderno | Material original de demostración | CC BY 4.0 3 SQL y bases de datos relacionales Índices y transacciones Un índice permite localizar registros sin recorrer necesariamente toda la tabla. Puede acelerar filtros y ciertas ordenaciones, pero ocupa espacio y añade trabajo a las inserciones, actualizaciones y borrados. No conviene crear un índice en cada columna sin medir las consultas reales. PostgreSQL permite inspeccionar planes con EXPLAIN y medir una ejecución con EXPLAIN ANALYZE; este último ejecuta la consulta. Una transacción agrupa operaciones que deben confirmarse juntas. COMMIT confirma los cambios; ROLLBACK los descarta. En una transferencia ficticia se resta saldo de una cuenta y se suma a otra. Si falla la segunda operación, ambas deben deshacerse para no perder dinero dentro del ejemplo. ACID resume atomicidad, consistencia, aislamiento y durabilidad. Atomicidad significa que se aplican todas las operaciones"
+        }
+      ],
+      "raw_answer": {
+        "answer": "INNER JOIN conserva solamente las combinaciones que cumplen la condición en ambos lados de las tablas, mientras que LEFT JOIN conserva todas las filas de la tabla izquierda, incluso si no hay correspondencia en la tabla derecha, con las columnas de la tabla derecha llenas con NULL. Por ejemplo, si alumnos contiene a Ana y a Luis, y matriculas solo tiene una matrícula de Ana, una consulta alumnos INNER JOIN matriculas mostrará solo a Ana. Una consulta alumnos LEFT JOIN matriculas mostrará a Ana y a Luis, con NULL en las columnas de matrícula para Luis.",
+        "citations": [
+          3,
+          4
+        ],
+        "sufficient": true
+      },
+      "validated_answer": {
+        "answer": "INNER JOIN conserva solamente las combinaciones que cumplen la condición en ambos lados de las tablas, mientras que LEFT JOIN conserva todas las filas de la tabla izquierda, incluso si no hay correspondencia en la tabla derecha, con las columnas de la tabla derecha llenas con NULL. Por ejemplo, si alumnos contiene a Ana y a Luis, y matriculas solo tiene una matrícula de Ana, una consulta alumnos INNER JOIN matriculas mostrará solo a Ana. Una consulta alumnos LEFT JOIN matriculas mostrará a Ana y a Luis, con NULL en las columnas de matrícula para Luis.",
+        "citations": [
+          {
+            "chunk_id": 3,
+            "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+            "document": "sql-fundamentos.pdf",
+            "page": 2,
+            "excerpt": "Cuaderno | Material original de demostración | CC BY 4.0 2 SQL y bases de datos relacionales INNER JOIN y LEFT JOIN JOIN combina filas de tablas usando una condición. INNER JOIN conserva solamente las combinaciones que cumplen esa condición en ambos lados. LEFT JOIN conserva todas las filas de la tabla izquierda; cuando no encuentra correspondencia a la derecha, las columnas de la tabla derecha tienen valor NULL. Ejemplo: alumnos contiene a Ana y a Luis. matriculas contiene una matrícula de Ana y ninguna de Luis. Una consulta alumnos INNER JOIN matriculas muestra a Ana. La misma consulta con LEFT JOIN muestra a Ana y también a Luis, con NULL en las columnas de matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a",
+            "url": "/api/documents/21cf4924-f94b-4f57-91e4-06d1267e573a/pdf#page=2"
+          },
+          {
+            "chunk_id": 4,
+            "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+            "document": "sql-fundamentos.pdf",
+            "page": 2,
+            "excerpt": "matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a LEFT JOIN matriculas m ON a.id = m.alumno_id. Para buscar alumnos sin matrícula puede añadirse WHERE m.alumno_id IS NULL, siempre que esa columna sea no nula en las matrículas existentes. Hay que distinguir condiciones en ON y filtros en WHERE. Si tras un LEFT JOIN se añade WHERE m.curso = 'SQL', se eliminan las filas sin matrícula porque su valor es NULL. Para conservar todos los alumnos y asociar solo las matrículas de SQL, la condición del curso debe formar parte del ON.",
+            "url": "/api/documents/21cf4924-f94b-4f57-91e4-06d1267e573a/pdf#page=2"
+          }
+        ],
+        "abstained": false
+      }
+    },
+    {
+      "question": "¿Qué diferencia hay entre INNER JOIN y LEFT JOIN?",
+      "context_chunks": 3,
+      "retrieval_seconds": 3.615,
+      "generation_seconds": 55.378,
+      "quality_check": "pass",
+      "model_metrics": {
+        "prompt_eval_count": 765,
+        "eval_count": 88,
+        "total_duration": 53952108300,
+        "load_duration": 11733442000,
+        "prompt_eval_duration": 27087768000,
+        "eval_duration": 14870129000
+      },
+      "context": [
+        {
+          "id": 3,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 2,
+          "text": "Cuaderno | Material original de demostración | CC BY 4.0 2 SQL y bases de datos relacionales INNER JOIN y LEFT JOIN JOIN combina filas de tablas usando una condición. INNER JOIN conserva solamente las combinaciones que cumplen esa condición en ambos lados. LEFT JOIN conserva todas las filas de la tabla izquierda; cuando no encuentra correspondencia a la derecha, las columnas de la tabla derecha tienen valor NULL. Ejemplo: alumnos contiene a Ana y a Luis. matriculas contiene una matrícula de Ana y ninguna de Luis. Una consulta alumnos INNER JOIN matriculas muestra a Ana. La misma consulta con LEFT JOIN muestra a Ana y también a Luis, con NULL en las columnas de matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a"
+        },
+        {
+          "id": 4,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 2,
+          "text": "matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a LEFT JOIN matriculas m ON a.id = m.alumno_id. Para buscar alumnos sin matrícula puede añadirse WHERE m.alumno_id IS NULL, siempre que esa columna sea no nula en las matrículas existentes. Hay que distinguir condiciones en ON y filtros en WHERE. Si tras un LEFT JOIN se añade WHERE m.curso = 'SQL', se eliminan las filas sin matrícula porque su valor es NULL. Para conservar todos los alumnos y asociar solo las matrículas de SQL, la condición del curso debe formar parte del ON."
+        },
+        {
+          "id": 2,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 1,
+          "text": "Una clave foránea no implica que su propia columna sea única: un alumno puede tener varias matrículas. La integridad referencial impide guardar referencias a filas inexistentes. Si se intenta matricular al alumno 99 y no existe alumnos.id=99, la base de datos rechaza la operación. La política de borrado se configura: RESTRICT impide un borrado que dejaría referencias y CASCADE elimina también las filas dependientes. Elegir CASCADE requiere considerar qué datos se perderían. Una relación de muchos a muchos se representa mediante una tabla intermedia. matriculas conecta alumnos con cursos. Una restricción UNIQUE(alumno_id, curso_id) evita matricular dos veces al mismo alumno en el mismo curso. La base de datos debe proteger esta regla incluso si dos peticiones llegan simultáneamente."
+        }
+      ],
+      "raw_answer": {
+        "answer": "INNER JOIN conserva solamente las combinaciones que cumplen la condición en ambos lados, mientras que LEFT JOIN conserva todas las filas de la tabla izquierda, incluso si no hay correspondencia en la tabla derecha, con las columnas de la tabla derecha llenas de NULL.",
+        "citations": [
+          3,
+          4
+        ],
+        "sufficient": true
+      },
+      "validated_answer": {
+        "answer": "INNER JOIN conserva solamente las combinaciones que cumplen la condición en ambos lados, mientras que LEFT JOIN conserva todas las filas de la tabla izquierda, incluso si no hay correspondencia en la tabla derecha, con las columnas de la tabla derecha llenas de NULL.",
+        "citations": [
+          {
+            "chunk_id": 3,
+            "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+            "document": "sql-fundamentos.pdf",
+            "page": 2,
+            "excerpt": "Cuaderno | Material original de demostración | CC BY 4.0 2 SQL y bases de datos relacionales INNER JOIN y LEFT JOIN JOIN combina filas de tablas usando una condición. INNER JOIN conserva solamente las combinaciones que cumplen esa condición en ambos lados. LEFT JOIN conserva todas las filas de la tabla izquierda; cuando no encuentra correspondencia a la derecha, las columnas de la tabla derecha tienen valor NULL. Ejemplo: alumnos contiene a Ana y a Luis. matriculas contiene una matrícula de Ana y ninguna de Luis. Una consulta alumnos INNER JOIN matriculas muestra a Ana. La misma consulta con LEFT JOIN muestra a Ana y también a Luis, con NULL en las columnas de matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a",
+            "url": "/api/documents/21cf4924-f94b-4f57-91e4-06d1267e573a/pdf#page=2"
+          },
+          {
+            "chunk_id": 4,
+            "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+            "document": "sql-fundamentos.pdf",
+            "page": 2,
+            "excerpt": "matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a LEFT JOIN matriculas m ON a.id = m.alumno_id. Para buscar alumnos sin matrícula puede añadirse WHERE m.alumno_id IS NULL, siempre que esa columna sea no nula en las matrículas existentes. Hay que distinguir condiciones en ON y filtros en WHERE. Si tras un LEFT JOIN se añade WHERE m.curso = 'SQL', se eliminan las filas sin matrícula porque su valor es NULL. Para conservar todos los alumnos y asociar solo las matrículas de SQL, la condición del curso debe formar parte del ON.",
+            "url": "/api/documents/21cf4924-f94b-4f57-91e4-06d1267e573a/pdf#page=2"
+          }
+        ],
+        "abstained": false
+      }
+    },
+    {
+      "question": "¿Cuándo es mi próximo examen?",
+      "context_chunks": 3,
+      "retrieval_seconds": 4.136,
+      "generation_seconds": 46.742,
+      "quality_check": "pass",
+      "model_metrics": {
+        "prompt_eval_count": 756,
+        "eval_count": 45,
+        "total_duration": 45944222500,
+        "load_duration": 5136626800,
+        "prompt_eval_duration": 29889832000,
+        "eval_duration": 10884067000
+      },
+      "context": [
+        {
+          "id": 4,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 2,
+          "text": "matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a LEFT JOIN matriculas m ON a.id = m.alumno_id. Para buscar alumnos sin matrícula puede añadirse WHERE m.alumno_id IS NULL, siempre que esa columna sea no nula en las matrículas existentes. Hay que distinguir condiciones en ON y filtros en WHERE. Si tras un LEFT JOIN se añade WHERE m.curso = 'SQL', se eliminan las filas sin matrícula porque su valor es NULL. Para conservar todos los alumnos y asociar solo las matrículas de SQL, la condición del curso debe formar parte del ON."
+        },
+        {
+          "id": 12,
+          "document_id": "2e4943a4-d83f-46fc-955a-db5167b20350",
+          "name": "python-fundamentos.pdf",
+          "page": 3,
+          "text": "API externa para provocar un timeout o devolver una respuesta inválida de forma controlada. Esto hace reproducibles los errores. Una prueba con dobles no demuestra la velocidad ni la calidad de un modelo real; esos aspectos necesitan medidas con el servicio y el equipo que se van a utilizar. Separar datos de desarrollo y de evaluación final ayuda a detectar ajustes que solo funcionan en ejemplos conocidos. En un buscador documental pueden anotarse preguntas y páginas relevantes. Recall@k mide qué proporción de las fuentes relevantes aparece entre los primeros k resultados; MRR promedia el inverso de la posición de la primera fuente relevante. Estas métricas evalúan recuperación y no demuestran por sí solas que una respuesta generada sea correcta."
+        },
+        {
+          "id": 1,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 1,
+          "text": "Cuaderno | Material original de demostración | CC BY 4.0 1 SQL y bases de datos relacionales Tablas, claves y relaciones Una base de datos relacional representa información mediante tablas. Cada fila representa un registro y cada columna un atributo. Por ejemplo, alumnos contiene id y nombre, mientras que matriculas contiene alumno_id y curso. Este material usa ejemplos ficticios y no contiene datos de estudiantes reales. Una clave primaria identifica de manera única cada fila. No admite valores nulos ni duplicados. En alumnos, id puede ser la clave primaria. Una clave foránea expresa una referencia a una clave primaria o única de otra tabla, o de la misma tabla. Por ejemplo, matriculas.alumno_id puede referenciar alumnos.id. Una clave foránea no implica que su propia columna sea única: un alumno puede tener varias matrículas. La integridad referencial impide guardar referencias a filas"
+        }
+      ],
+      "raw_answer": {
+        "answer": "No hay suficientes datos en los fragmentos proporcionados para determinar cuándo es el próximo examen.",
+        "citations": [],
+        "sufficient": false
+      },
+      "validated_answer": {
+        "answer": "No encuentro información suficiente en los documentos para responder con fuentes.",
+        "citations": [],
+        "abstained": true
+      }
+    },
+    {
+      "question": "¿Cuándo es mi próximo examen?",
+      "context_chunks": 5,
+      "retrieval_seconds": 4.136,
+      "generation_seconds": 71.654,
+      "quality_check": "pass",
+      "model_metrics": {
+        "prompt_eval_count": 1220,
+        "eval_count": 45,
+        "total_duration": 70126415900,
+        "load_duration": 5309523400,
+        "prompt_eval_duration": 56765669000,
+        "eval_duration": 7953772000
+      },
+      "context": [
+        {
+          "id": 4,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 2,
+          "text": "matrícula para Luis. Si Ana tiene dos matrículas, aparece en dos filas: JOIN no elimina duplicados automáticamente. Consulta ilustrativa: SELECT a.nombre, m.curso FROM alumnos a LEFT JOIN matriculas m ON a.id = m.alumno_id. Para buscar alumnos sin matrícula puede añadirse WHERE m.alumno_id IS NULL, siempre que esa columna sea no nula en las matrículas existentes. Hay que distinguir condiciones en ON y filtros en WHERE. Si tras un LEFT JOIN se añade WHERE m.curso = 'SQL', se eliminan las filas sin matrícula porque su valor es NULL. Para conservar todos los alumnos y asociar solo las matrículas de SQL, la condición del curso debe formar parte del ON."
+        },
+        {
+          "id": 12,
+          "document_id": "2e4943a4-d83f-46fc-955a-db5167b20350",
+          "name": "python-fundamentos.pdf",
+          "page": 3,
+          "text": "API externa para provocar un timeout o devolver una respuesta inválida de forma controlada. Esto hace reproducibles los errores. Una prueba con dobles no demuestra la velocidad ni la calidad de un modelo real; esos aspectos necesitan medidas con el servicio y el equipo que se van a utilizar. Separar datos de desarrollo y de evaluación final ayuda a detectar ajustes que solo funcionan en ejemplos conocidos. En un buscador documental pueden anotarse preguntas y páginas relevantes. Recall@k mide qué proporción de las fuentes relevantes aparece entre los primeros k resultados; MRR promedia el inverso de la posición de la primera fuente relevante. Estas métricas evalúan recuperación y no demuestran por sí solas que una respuesta generada sea correcta."
+        },
+        {
+          "id": 1,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 1,
+          "text": "Cuaderno | Material original de demostración | CC BY 4.0 1 SQL y bases de datos relacionales Tablas, claves y relaciones Una base de datos relacional representa información mediante tablas. Cada fila representa un registro y cada columna un atributo. Por ejemplo, alumnos contiene id y nombre, mientras que matriculas contiene alumno_id y curso. Este material usa ejemplos ficticios y no contiene datos de estudiantes reales. Una clave primaria identifica de manera única cada fila. No admite valores nulos ni duplicados. En alumnos, id puede ser la clave primaria. Una clave foránea expresa una referencia a una clave primaria o única de otra tabla, o de la misma tabla. Por ejemplo, matriculas.alumno_id puede referenciar alumnos.id. Una clave foránea no implica que su propia columna sea única: un alumno puede tener varias matrículas. La integridad referencial impide guardar referencias a filas"
+        },
+        {
+          "id": 2,
+          "document_id": "21cf4924-f94b-4f57-91e4-06d1267e573a",
+          "name": "sql-fundamentos.pdf",
+          "page": 1,
+          "text": "Una clave foránea no implica que su propia columna sea única: un alumno puede tener varias matrículas. La integridad referencial impide guardar referencias a filas inexistentes. Si se intenta matricular al alumno 99 y no existe alumnos.id=99, la base de datos rechaza la operación. La política de borrado se configura: RESTRICT impide un borrado que dejaría referencias y CASCADE elimina también las filas dependientes. Elegir CASCADE requiere considerar qué datos se perderían. Una relación de muchos a muchos se representa mediante una tabla intermedia. matriculas conecta alumnos con cursos. Una restricción UNIQUE(alumno_id, curso_id) evita matricular dos veces al mismo alumno en el mismo curso. La base de datos debe proteger esta regla incluso si dos peticiones llegan simultáneamente."
+        },
+        {
+          "id": 11,
+          "document_id": "2e4943a4-d83f-46fc-955a-db5167b20350",
+          "name": "python-fundamentos.pdf",
+          "page": 3,
+          "text": "Cuaderno | Material original de demostración | CC BY 4.0 3 Python para procesamiento de datos Pruebas reproducibles y datos Una prueba unitaria comprueba una parte pequeña de la lógica de forma aislada. Una prueba de integración comprueba la colaboración entre componentes reales, por ejemplo Python y PostgreSQL. Sustituir PostgreSQL por un objeto simulado permite probar lógica de aplicación, pero no verifica restricciones, consultas ni transacciones reales de PostgreSQL. En pytest, una fixture prepara datos o recursos que necesitan las pruebas. Una prueba parametrizada ejecuta el mismo comportamiento con entradas diferentes. Es útil probar casos normales y límites: archivo vacío, texto ausente, carga repetida o servicio no disponible. Un doble de prueba puede sustituir una API externa para provocar un timeout o devolver una respuesta inválida de forma controlada. Esto hace reproducibles los errores. Una prueba con dobles no demuestra"
+        }
+      ],
+      "raw_answer": {
+        "answer": "No hay suficientes datos en los fragmentos proporcionados para determinar cuándo es el próximo examen.",
+        "citations": [],
+        "sufficient": false
+      },
+      "validated_answer": {
+        "answer": "No encuentro información suficiente en los documentos para responder con fuentes.",
+        "citations": [],
+        "abstained": true
+      }
+    }
+  ]
+}

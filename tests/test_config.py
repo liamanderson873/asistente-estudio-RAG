@@ -14,3 +14,9 @@ def test_incompatible_embedding_dimensions_are_rejected(monkeypatch, value):
     monkeypatch.setenv("EMBEDDING_DIMENSIONS", value)
     with pytest.raises(ValidationError):
         Settings(_env_file=None)
+
+
+@pytest.mark.parametrize("value", [0, 6])
+def test_context_budget_rejects_empty_or_excessive_context(value):
+    with pytest.raises(ValidationError):
+        Settings(_env_file=None, answer_context_chunks=value)

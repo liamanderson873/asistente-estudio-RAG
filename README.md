@@ -58,6 +58,8 @@ Puedes cambiar el generador mediante `CHAT_MODEL`; descarga primero el modelo co
 
 ## Pruebas y calidad
 
+El generador recibe por defecto los **tres primeros fragmentos** de los cinco recuperados. La búsqueda y su evaluación conservan cinco resultados; el recorte solo afecta al contexto enviado al modelo y a las fuentes que puede citar. `ANSWER_CONTEXT_CHUNKS` permite elegir de uno a cinco. La reducción mejora la latencia en la prueba de desarrollo documentada, pero puede dejar fuera información útil para preguntas que necesiten más fuentes; no garantiza mantener la calidad con cualquier documento.
+
 ```powershell
 uv run ruff check .
 uv run pytest -q

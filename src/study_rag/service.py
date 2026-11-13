@@ -99,7 +99,7 @@ class StudyService:
         return reciprocal_rank_fusion(rankings, limit)
 
     def ask(self, question: str, mode: str = "hybrid") -> dict:
-        hits = self.retrieve(question, mode, limit=5)
+        hits = self.retrieve(question, mode, limit=5)[: self.settings.answer_context_chunks]
         if not hits:
             return validate_answer({}, [])
         return validate_answer(self.model.answer(question, hits), hits)

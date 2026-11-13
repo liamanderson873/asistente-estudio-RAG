@@ -4,7 +4,8 @@ Estado actualizado el 13 de noviembre de 2026: recorrido completo probado con Po
 
 ## Verificación con servicios reales (13 de noviembre)
 
-- 59 pruebas correctas, incluidas las tres de PostgreSQL que antes se omitían y la regresión que rechaza la alucinación observada de 1.5B; sin pruebas omitidas.
+- 64 pruebas correctas, incluidas las tres de PostgreSQL que antes se omitían, la regresión que rechaza la alucinación observada de 1.5B y los límites y citas del contexto reducido; sin pruebas omitidas.
+- Comparación real de contexto 5/3 ejecutada con dos preguntas de desarrollo: citas y abstención correctas en los cuatro casos. Resultados y límites en [el informe](experiments/2026-11-13-context-budget.md). `docker compose config --quiet` correcto.
 - PostgreSQL 17.12 y pgvector en `cuaderno-db-local`; Ollama 0.40.16 nativo en CPU. Nube desactivada.
 - Dos documentos cargados, repetición detectada y enlaces a páginas comprobados.
 - 3B respondió correctamente a la pregunta de JOIN y se abstuvo ante la pregunta sobre la fecha de examen. La variante 1.5B falló esta última: no se eligió como modelo predeterminado.

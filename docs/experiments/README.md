@@ -25,4 +25,6 @@ Seis preguntas contestables del conjunto `dev`, seis páginas en total y evaluac
 
 No se utilizó `holdout` para realizar estos ajustes. Los documentos se crearon para la demo y las preguntas están relacionadas con ellos: no extrapolar los resultados a PDFs arbitrarios. Algunas mediciones de latencia de recuperación coincidieron con otras pruebas de generación; no sirven para comparar velocidad entre métodos.
 
-Los JSON adjuntos conservan respuestas, referencias y medidas reales. No contienen contraseñas ni documentos personales. El siguiente trabajo es ampliar las preguntas, mejorar la abstención y reducir el contexto/latencia manteniendo controles de calidad.
+Los JSON adjuntos conservan respuestas, referencias y medidas reales. No contienen contraseñas ni documentos personales.
+
+La [comparación posterior de tres frente a cinco fragmentos](2026-11-13-context-budget.md) redujo la generación en los dos ejemplos comprobados y mantiene 3B. Se adopta un contexto de tres fragmentos configurable; queda pendiente ampliar las preguntas y la evaluación de abstención.

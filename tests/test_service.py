@@ -95,6 +95,30 @@ def test_empty_retrieval_does_not_call_generator():
     model.answer.assert_not_called()
 
 
+@pytest.mark.parametrize("context_chunks", [3, 5])
+def test_context_budget_does_not_change_retrieval_or_source_order(context_chunks):
+    repository, model = Mock(), Mock()
+    service = StudyService(repository, model, Settings(answer_context_chunks=context_chunks))
+    retrieved = [hit(i) for i in range(1, 6)]
+    service.retrieve = Mock(return_value=retrieved)
+    model.answer.return_value = {"answer": "Respuesta", "sufficient": True, "citations": [1]}
+    result = service.ask("clave foránea")
+    service.retrieve.assert_called_once_with("clave foránea", "hybrid", limit=5)
+    assert model.answer.call_args.args[1] == retrieved[:context_chunks]
+    assert not result["abstained"]
+
+
+def test_generator_cannot_cite_a_retrieved_source_omitted_from_its_context():
+    service = StudyService(Mock(), Mock(), Settings(answer_context_chunks=3))
+    service.retrieve = Mock(return_value=[hit(i) for i in range(1, 6)])
+    service.model.answer.return_value = {
+        "answer": "Referencia a un fragmento no enviado",
+        "sufficient": True,
+        "citations": [4],
+    }
+    assert service.ask("SQL")["abstained"]
+
+
 @pytest.mark.parametrize("vector", [[0.0] * 768, [1.0], [float("nan")] * 768])
 def test_rejects_vectors_that_cannot_be_searched(vector):
     with pytest.raises(ValueError):

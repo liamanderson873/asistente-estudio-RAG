@@ -1,6 +1,6 @@
 {
   "scriptCompleted": true,
-  "contentDigest": "b8025fe888563022eac34e9b29fdcfc8deb7bda797195e49d7e8d7ec588fcbd4",
+  "contentDigest": "1bf2250d7833f25f75e93655609e0b19c166eadffa484664193113e8d7ce95a5",
   "files": [
     {
       "path": ".dockerignore",
@@ -11,7 +11,7 @@
     {
       "path": ".env.example",
       "language": "config",
-      "sizeLines": 5,
+      "sizeLines": 6,
       "fileCategory": "config"
     },
     {
@@ -41,13 +41,13 @@
     {
       "path": "README.md",
       "language": "markdown",
-      "sizeLines": 107,
+      "sizeLines": 111,
       "fileCategory": "docs"
     },
     {
       "path": "compose.yaml",
       "language": "yaml",
-      "sizeLines": 51,
+      "sizeLines": 52,
       "fileCategory": "infra"
     },
     {
@@ -81,9 +81,15 @@
       "fileCategory": "docs"
     },
     {
+      "path": "docs/plans/2026-11-13-context-budget.md",
+      "language": "markdown",
+      "sizeLines": 8,
+      "fileCategory": "docs"
+    },
+    {
       "path": "docs/verification.md",
       "language": "markdown",
-      "sizeLines": 45,
+      "sizeLines": 46,
       "fileCategory": "docs"
     },
     {
@@ -97,6 +103,12 @@
       "language": "toml",
       "sizeLines": 30,
       "fileCategory": "config"
+    },
+    {
+      "path": "scripts/benchmark_context.py",
+      "language": "python",
+      "sizeLines": 91,
+      "fileCategory": "code"
     },
     {
       "path": "scripts/evaluate.py",
@@ -149,7 +161,7 @@
     {
       "path": "src/study_rag/config.py",
       "language": "python",
-      "sizeLines": 13,
+      "sizeLines": 14,
       "fileCategory": "code"
     },
     {
@@ -203,7 +215,7 @@
     {
       "path": "src/study_rag/static/style.css",
       "language": "css",
-      "sizeLines": 5,
+      "sizeLines": 4,
       "fileCategory": "markup"
     },
     {
@@ -221,7 +233,7 @@
     {
       "path": "tests/test_config.py",
       "language": "python",
-      "sizeLines": 16,
+      "sizeLines": 22,
       "fileCategory": "code"
     },
     {
@@ -251,7 +263,7 @@
     {
       "path": "tests/test_service.py",
       "language": "python",
-      "sizeLines": 144,
+      "sizeLines": 168,
       "fileCategory": "code"
     },
     {
@@ -261,17 +273,17 @@
       "fileCategory": "code"
     }
   ],
-  "totalFiles": 43,
-  "filteredByIgnore": 9,
+  "totalFiles": 45,
+  "filteredByIgnore": 11,
   "estimatedComplexity": "moderate",
   "failures": [],
   "stats": {
-    "filesScanned": 43,
+    "filesScanned": 45,
     "byCategory": {
       "infra": 4,
       "config": 4,
-      "code": 24,
-      "docs": 7,
+      "code": 25,
+      "docs": 8,
       "script": 1,
       "data": 1,
       "markup": 2
@@ -280,11 +292,11 @@
       "unknown": 2,
       "config": 1,
       "yaml": 2,
-      "markdown": 7,
+      "markdown": 8,
       "dockerfile": 1,
       "json": 2,
       "toml": 1,
-      "python": 22,
+      "python": 23,
       "powershell": 1,
       "sql": 1,
       "javascript": 1,
